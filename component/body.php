@@ -1,0 +1,37 @@
+<?php
+
+                $act = $_GET['act'];
+				  if($act=='tc'){
+                    require_once("component/tc_tae/index.inc.php"); 
+				  	
+				  }
+				  else if ($act=='insert') {
+					  require_once("component/tc_tae/create.php");
+				  	
+				  }
+				  else if ($act=='test') {
+					  require_once("component/tc_tae/test.php");
+				  	
+				  }
+				  
+				  else if ($act=='home') {
+					  require_once("component/home/view.php");
+				  	
+				  }
+				  else if ($act=='tc_kim') {
+					  require_once("component/tc_kim/view.php");
+				  	
+				  }
+
+				  else if ($act=='login') {
+					  ?><script>window.location="component/login/login.php";</script><?php
+				  	
+				  }
+				  else if ($act=='login_chek') {
+					?><script>window.location="component/login/login_chek.php";</script><?php
+				  	
+				  }
+				  else if ($act=='model') {
+					?><script>window.location="component/login/login_chek.php";</script><?php
+				  	
+				  }
