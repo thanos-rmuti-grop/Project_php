@@ -9,6 +9,7 @@
         $result2 = $user_model -> getUser2();
         $result3 = $user_model -> getUser3();
         $result4 = $user_model -> getUser4();
+        // print_r($result4);
         require_once($path.'view.php');
     }
     else if( $_GET['action'] == "update") {
@@ -50,7 +51,8 @@
         
     }
     else if( $_GET['action'] == "delete") {
-        $id = $_GET['id']; 
+
+        $id = $_GET['id'];
         
         
         

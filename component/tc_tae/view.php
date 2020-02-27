@@ -115,7 +115,7 @@
                                               if (isConfirm){
                                                 swal("ลบข้อมูลสำเร็จ!", "ข้อมูลของท่านจะหายไป!", "success");
                                                 setTimeout(() => {
-                                                  window.location="index.php?act=user&action=delete&id=<?php echo $data['Id_card'] ?>";
+                                                  window.location="index.php?act=tc&action=delete&id=<?php echo $data['Id_card'] ?>";
                                                 }, 2000);
                                                 
                                               } else {

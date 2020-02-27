@@ -22,16 +22,22 @@
 					  require_once("component/tc_kim/view.php");
 				  	
 				  }
+				  else if ($act=='au') {
+					  require_once("component/au/view.php");
+				  	
+				  }
 
 				  else if ($act=='login') {
 					  ?><script>window.location="component/login/login.php";</script><?php
 				  	
 				  }
-				  else if ($act=='login_chek') {
+				 
+				  else if ($act=='model') {
 					?><script>window.location="component/login/login_chek.php";</script><?php
 				  	
 				  }
-				  else if ($act=='model') {
-					?><script>window.location="component/login/login_chek.php";</script><?php
+				  else if ($act=='logout') {
+					session_unset();
+					?><script>window.location="component/login/login.php";</script><?php
 				  	
 				  }

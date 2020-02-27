@@ -14,7 +14,7 @@
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <li class="nav-item ">
-        <a href="index.php?act=login" class="nav-link">
+        <a href="index.php?act=logout" class="nav-link">
           <i class="fa fa-power-off"></i> Logout
         </a>
         

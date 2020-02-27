@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <aside class="main-sidebar sidebar-light-primary elevation-4">
         <!-- Brand Logo -->
         <a routerLink="/home" class="brand-link bg-danger">
@@ -16,7 +19,7 @@
               
             </div>
             <div class="info">
-              กิตติพงษ์ ปลิงกระโทก<br>
+              <?php echo $_SESSION['name']; ?><br>
               <span style="color: red;">สถานะ :</span><span> ผู้ดูแลระบบ</span>
             </div>
           </div>
@@ -222,7 +225,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a routerLink="/reimburse" class="nav-link">
+                <a href="index.php?act=au" class="nav-link">
                   <i class="nav-icon fas fa-check-square"></i>
                   <p>ใบเบิก</p>
                 </a>

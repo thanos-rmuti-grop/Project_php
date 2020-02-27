@@ -1,63 +1,42 @@
 <?php
 session_start();
+require_once('../../BaseModel/LoginModel.php');
 
-$_POST['Username'];
-$_POST['Password'];
-    // $username = $username;
+$login = new LoginModel;
+if(($_POST['Username'])==''){
+    ?><script>alert("กรุณากรอกรหัสให้ครบ")</script><?php
+    ?><script>window.location="../../index.php?act=login";</script><?php
+}
+if(isset($_POST['Username']) && isset($_POST['Password'])){
+    if($_POST['Username'] != '' && $_POST['Password'] != ''){
+        $data['Username']=$_POST['Username'];
+        $data['Password']=$_POST['Password'];
 
-        if(($_POST['Username'])=="tae"){
-				echo "เข้ามา";
-                                    //   include("../../BaseModel/UserModel.php");
-                                    //   $user_model = new UserModel;
-                                    
-                                    // $Username = $_POST['Username'];
-                                    // $Password = $_POST['Password'];
-                                    
-                                    //   $login_user = $user_model->getLogin($_POST['username'],$_POST['password']);
-
-                    
-                                    // $login = $user_model->login($_POST['Username'],$_POST['Password']);
-                    
-                                    //   $result = mysqli_query($conn,$sql);
-                                    // print_r($login);
-                                //    echo "login";
-                                //     if(!isset($_POST['Username'])){
-                                //     //   if(mysqli_num_rows($login)==1)
-                                //         // echo "55555";
-                                //           $row = mysqli_fetch_array($result);
-                                //            $_SESSION["UserID"] = $row["ID"];
-                                //           $_SESSION["user"] = $row["fname"]." ";
-                                        
-                                //           $_SESSION["company"] = $row["company"];
-                                //           $_SESSION["Userlevel"] = $row["Userlevel"];
-                    
-                                //         //   if($_SESSION["Userlevel"]=="A"){ 
-                    
-                                            Header("Location: ./../../index.php?act=home");
-                    
-                                //         //   }
-                    
-                                //         //   if ($_SESSION["Userlevel"]=="M"){  
-                    
-                                //         //     Header("Location: Mini_project_Web/../index_user/index_user.php");
-                    
-                                //         //   }
-                    
-                                //         //   }else{
-                                            
-                                //             // echo "<script>";
-                                //             //     echo "alert(\" user หรือ  password ไม่ถูกต้อง\");"; 
-                                //             //     echo "window.history.back()";
-                                //             // echo "</script>";
-                    
-                                //       }
- 
-             } else{
-                echo "55555555555555555555555555555555555555555555555555555555555555555555555555555";
- 
-             Header("Location: ./../../index.php?act=login"); 
- 
+        $login_user = $login->getLogin($data);
+        foreach($login_user as $data){
+            // print_r($data);
+          echo $_SESSION['Id_card'] = $data['Id_card'];
+          echo $_SESSION['Title_id'] = $data['Title_id'];
+          echo $_SESSION['name'] = $data['name'];
+          echo $_SESSION['lastname'] = $data['lastname'];
+          echo $_SESSION['code'] = $data['code'];
         }
-    
-        
+
+        if($_SESSION['Id_card'] > 0){
+            // $_SESSION['wsd_administrator_user'] = $login_user;
+            
+            ?><script>window.location="../../index.php?act=tc";</script><?php
+            
+            
+        }else{
+            ?><script>alert("รหัสไม่ถูกต้อง กรุณากรอกใหม่อีกครั้ง")</script><?php
+
+            ?><script>window.location="../../index.php?act=login";</script><?php
+        }
+    }else{
+        ?><script>window.location="../../index.php?act=login";</script><?php
+    }
+}else{
+    ?><script>window.location="../../index.php?act=login";</script><?php
+}
 ?>

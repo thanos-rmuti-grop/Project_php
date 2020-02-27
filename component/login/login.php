@@ -15,11 +15,11 @@
 
     <!-- Icon -->
     <div class="fadeIn first">
-      <img src="https://scontent.fnak3-1.fna.fbcdn.net/v/t1.0-9/p960x960/78115973_2726291467391459_4705118152869019648_o.jpg?_nc_cat=111&_nc_ohc=SFRNReinpzMAX92_KPT&_nc_ht=scontent.fnak3-1.fna&_nc_tp=6&oh=e7e6d153523164cfa870b893646d8d08&oe=5EC1449C" id="icon" alt="User Icon" />
+      <img src="https://webs.rmutl.ac.th/assets/upload/files/2018/11/20181114113020_50956.png" id="icon" alt="User Icon" />
     </div>
 
     <!-- Login Form -->
-    <form class="email-login" action="./login_chek.php" method="POST">
+    <form class="email-login" action="login_chek.php" method="POST">
       <input  type="text" id="login" class="fadeIn second" name="Username" placeholder="Username">
       <input  type="text" id="password" class="fadeIn third" name="Password" placeholder="password">
       <input  type="submit" class="fadeIn fourth" value="Log In">

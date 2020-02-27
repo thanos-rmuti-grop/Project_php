@@ -71,19 +71,21 @@ class UserModel extends BaseModel{
             return $data;
         }
     }
-    function login($username, $password){
-        
-        $username = static::$db->real_escape_string($username);
-        $password = static::$db->real_escape_string($password);
+    function getLogin(){
 
-        if ($result = mysqli_query(static::$db,"SELECT * FROM `user` WHERE name = 'ff' AND passsword='ff'
-            ", MYSQLI_USE_RESULT)) {
-            $data;
-            while ($row = mysqli_fetch_array($result,MYSQLI_ASSOC)){
-                $data = $row;
-            }
-            $result->close();
-            return $data;
+        $sql = "SELECT * FROM `user` WHERE `Id_card`='4' AND `passsword`='4'
+        ";
+ 
+            if ($result = mysqli_query(static::$db,$sql, MYSQLI_USE_RESULT)) { //ถ้าเผื่อ query ข้อมูลได้ มันจะทำตามเงื่อนไขเรื่อยๆ
+                $data = [];
+                foreach($result as $row){
+                    $data[] = $row;
+                }
+                // while ($row = mysqli_fetch_array($result,MYSQLI_ASSOC)){
+                    
+                // }
+                $result->close();
+                return $data;
         }
     }    
     function addUser($data = []){
