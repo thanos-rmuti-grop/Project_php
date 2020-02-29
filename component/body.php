@@ -26,6 +26,10 @@
 					  require_once("component/au/view.php");
 				  	
 				  }
+				  else if ($act=='cannot') {
+					  require_once("component/tc_tae/cannot.php");
+				  	
+				  }
 
 				  else if ($act=='login') {
 					  ?><script>window.location="component/login/login.php";</script><?php
@@ -38,6 +42,6 @@
 				  }
 				  else if ($act=='logout') {
 					session_unset();
-					?><script>window.location="component/login/login.php";</script><?php
+					?><script>window.location="component/login/logout.php";</script><?php
 				  	
 				  }

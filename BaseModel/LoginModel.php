@@ -8,8 +8,17 @@ class LoginModel extends BaseModel{
         }
     }
     function getLogin($data){
-        $sql = "SELECT * FROM `user` WHERE `Id_card`='".$data['Username']."' AND `passsword`='".$data['Password']."'
+
+
+        $sql = "SELECT title.*,user.*,CONCAT(s_position.name) AS position_name
+        FROM title
+        INNER JOIN `user` ON user.Title_id = title.title_id
+        INNER JOIN `s_position` ON s_position.id = user.position_id
+        WHERE Id_card = '".$data['Username']."' AND PASSWORD = '".$data['Password']."'
+        
         ";
+        // $sql = "SELECT * FROM `user` WHERE `Id_card`='".$data['Username']."' AND `passsword`='".$data['Password']."'
+        // ";
         
         if ($result = mysqli_query(static::$db,$sql, MYSQLI_USE_RESULT)) { //ถ้าเผื่อ query ข้อมูลได้ มันจะทำตามเงื่อนไขเรื่อยๆ
             $data = [];

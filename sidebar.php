@@ -19,8 +19,16 @@ session_start();
               
             </div>
             <div class="info">
-              <?php echo $_SESSION['name']; ?><br>
-              <span style="color: red;">สถานะ :</span><span> ผู้ดูแลระบบ</span>
+              <?php echo $_SESSION['title_name']; ?>
+               
+            <?php  echo  $_SESSION['name']." ".$_SESSION['lastname']; 
+              ?><br>
+              <span style="color: red;">สถานะ :</span><span> 
+              <?php 
+                echo $_SESSION['position_name'];
+              
+              ?>
+              </span>
             </div>
           </div>
     
@@ -252,3 +260,4 @@ session_start();
         </div>
         <!-- /.sidebar -->
       </aside>
+      
