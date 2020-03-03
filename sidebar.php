@@ -99,7 +99,7 @@ session_start();
                 <ul class="nav nav-treeview">
                   
                   <li class="nav-item">
-                    <a href="/tb" class="nav-link active">
+                    <a href="index.php?act=timetable" class="nav-link active">
                       
                       <p>เพิ่มตารางสอน</p>
                     </a>

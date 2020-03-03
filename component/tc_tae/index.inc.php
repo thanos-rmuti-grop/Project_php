@@ -9,6 +9,8 @@
         $result2 = $user_model -> getUser2();
         $result3 = $user_model -> getUser3();
         $result4 = $user_model -> getUser4();
+
+        $ess_cour = $user_model -> getEss_cour();
         // print_r($result4);
         require_once($path.'view.php');
     }
@@ -47,6 +49,37 @@
             $user_model -> addUser($data);
     
             ?><script>window.location="index.php?act=tc";</script><?php
+    
+        
+    }
+    else if( $_GET['action'] == "add_cannot") {
+        
+
+
+        $data["Note"] = $_POST["Note"]; 
+        $data["date_teach"] = $_POST["date_teach"]; 
+        $data["subject"] = $_POST["subject"]; 
+        $data["Teacher_replace_id"] = $_POST["Teacher_replace_id"];
+
+            $data["date_teach"] = $_POST["date_teach"];
+      
+            $date = new DateTime($data["date_teach"]);
+             echo $date->format('Y-m-d');
+
+       $result = $_POST['daterange'];  // value ที่ส่งมา
+            $result_explode = explode('-', $result);
+            
+           
+            
+          
+        
+             $data["start"] = $result_explode[0];  // 0 คือค่าก่อน '-'
+             $data["end"] = $result_explode[1]; // 1 ค่าหลัง '-'
+ 
+        // $data["big_call"] = $_POST["big_call"];    
+           
+        $user_model -> add_cannot($data);
+           
     
         
     }

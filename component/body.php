@@ -30,6 +30,10 @@
 					  require_once("component/tc_tae/cannot.php");
 				  	
 				  }
+				  else if ($act=='timetable') {
+					  require_once("component/timetable/view.php");
+				  	
+				  }
 
 				  else if ($act=='login') {
 					  ?><script>window.location="component/login/login.php";</script><?php

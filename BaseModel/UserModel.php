@@ -71,23 +71,22 @@ class UserModel extends BaseModel{
             return $data;
         }
     }
-    function getLogin(){
-
-        $sql = "SELECT * FROM `user` WHERE `Id_card`='4' AND `passsword`='4'
+    function getEss_cour(){
+        $sql = "SELECT * FROM `ess_course`
         ";
- 
-            if ($result = mysqli_query(static::$db,$sql, MYSQLI_USE_RESULT)) { //ถ้าเผื่อ query ข้อมูลได้ มันจะทำตามเงื่อนไขเรื่อยๆ
-                $data = [];
-                foreach($result as $row){
-                    $data[] = $row;
-                }
-                // while ($row = mysqli_fetch_array($result,MYSQLI_ASSOC)){
-                    
-                // }
-                $result->close();
-                return $data;
+        //ใส่ไว้สำหรับ ค้นหาข้อมูล
+        if ($result = mysqli_query(static::$db,$sql, MYSQLI_USE_RESULT)) { //ถ้าเผื่อ query ข้อมูลได้ มันจะทำตามเงื่อนไขเรื่อยๆ
+            $data = [];
+            foreach($result as $row){
+                $data[] = $row;
+            }
+            // while ($row = mysqli_fetch_array($result,MYSQLI_ASSOC)){
+                
+            // }
+            $result->close();
+            return $data;
         }
-    }    
+    }
     function addUser($data = []){
         $sql = "CALL
         addUser(
@@ -101,6 +100,37 @@ class UserModel extends BaseModel{
             '".$data["status_id"]."',
             '".$data["allow_id"]."'
         )
+        ";
+        echo "<pre>";
+        print_r($sql);
+        echo "</pre>";
+         if (mysqli_query(static::$db,$sql, MYSQLI_USE_RESULT)) {
+            return 1;
+        }else {
+            return 0;
+        }
+    }
+    function add_cannot($data = []){
+        $sql = "INSERT INTO `cannot_teach`(
+            `cannot_teach_id`,
+            `Date_begin`,
+            `Date_end`,
+            `Note`,
+            `code`,
+            `Teacher_id`,
+            `Semester`,
+            `Academic_year`
+        )
+        VALUES(
+            NULL,
+            '".$data["start"]."',
+            '".$data["end"]."',
+            '".$data["Note"]."',
+            '1733',
+            '6851',
+            '2',
+            '2562'
+        );
         ";
         echo "<pre>";
         print_r($sql);

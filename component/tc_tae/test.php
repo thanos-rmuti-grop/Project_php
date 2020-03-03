@@ -1,9 +1,9 @@
 <h1>hello world</h1>
  
  <?php  
-//  $connect = mysqli_connect("localhost", "root", "", "mini_project_database");  
-//  $query = "SELECT * FROM `user` ORDER BY `Id_card` DESC";  
-//  $result = mysqli_query($connect, $query); 
+ $connect = mysqli_connect("localhost", "root", "", "mini_project_database");  
+ $query = "SELECT * FROM `user` ORDER BY `Id_card` DESC";  
+ $result = mysqli_query($connect, $query); 
   
  ?>  
  <!DOCTYPE html>  
@@ -17,7 +17,7 @@
       </pre>
       <?php 
       echo "<pre>";
-      print_r ($us);
+      print_r ($result);
       echo  "</pre>";
       ?>
            <br /><br />  
@@ -37,7 +37,7 @@
                                     <th width="15%">View</th>  
                                </tr>  
                                <?php  
-                               foreach($us as $row1)
+                               foreach($result as $row1)
                                {  
                                ?>  
                                <tr>  
@@ -105,11 +105,11 @@
       </div>  
  </div>  
  <script>  
-//  $(document).ready(function(){  
-//       $('#add').click(function(){  
-//            $('#insert').val("Insert");  
-//            $('#insert_form')[0].reset();  
-//       });  
+ $(document).ready(function(){  
+      $('#add').click(function(){  
+           $('#insert').val("Insert");  
+           $('#insert_form')[0].reset();  
+      });  
 
       $(document).on('click', '.edit_data', function(){  
            var employee_id = $(this).attr("id");  
@@ -124,62 +124,62 @@
                      $('#gender').val(data.lastname);  
                      $('#designation').val(data.passsword);  
                      $('#age').val(data.code);  
-                    //  $('#employee_id').val(data.Id_card);  
-                    //  $('#insert').val("Update");  
+                     $('#employee_id').val(data.Id_card);  
+                     $('#insert').val("Update");  
                      $('#add_data_Modal').modal('show');  
                 }  
            });  
       });
       <?php  echo json_encode($row);   ?>
-     //  $('#insert_form').on("submit", function(event){  
-     //       event.preventDefault();  
-     //       if($('#name').val() == "")  
-     //       {  
-     //            alert("Name is required");  
-     //       }  
-     //       else if($('#address').val() == '')  
-     //       {  
-     //            alert("Address is required");  
-     //       }  
-     //       else if($('#designation').val() == '')  
-     //       {  
-     //            alert("Designation is required");  
-     //       }  
-     //       else if($('#age').val() == '')  
-     //       {  
-     //            alert("Age is required");  
-     //       }  
-     //       else  
-     //       {  
-     //            $.ajax({  
-     //                 url:"insert.php",  
-     //                 method:"POST",  
-     //                 data:$('#insert_form').serialize(),  
-     //                 beforeSend:function(){  
-     //                      $('#insert').val("Inserting");  
-     //                 },  
-     //                 success:function(data){  
-     //                      $('#insert_form')[0].reset();  
-     //                      $('#add_data_Modal').modal('hide');  
-     //                      $('#employee_table').html(data);  
-     //                 }  
-     //            });  
-     //       }  
-     //  });  
-     //  $(document).on('click', '.view_data', function(){  
-     //       var employee_id = $(this).attr("id");  
-     //       if(employee_id != '')  
-     //       {  
-     //            $.ajax({  
-     //                 url:"select.php",  
-     //                 method:"POST",  
-     //                 data:{employee_id:employee_id},  
-     //                 success:function(data){  
-     //                      $('#employee_detail').html(data);  
-     //                      $('#dataModal').modal('show');  
-     //                 }  
-     //            });  
-     //       }            
-     //  });  
-//  });  
+      $('#insert_form').on("submit", function(event){  
+           event.preventDefault();  
+           if($('#name').val() == "")  
+           {  
+                alert("Name is required");  
+           }  
+           else if($('#address').val() == '')  
+           {  
+                alert("Address is required");  
+           }  
+           else if($('#designation').val() == '')  
+           {  
+                alert("Designation is required");  
+           }  
+           else if($('#age').val() == '')  
+           {  
+                alert("Age is required");  
+           }  
+           else  
+           {  
+                $.ajax({  
+                     url:"insert.php",  
+                     method:"POST",  
+                     data:$('#insert_form').serialize(),  
+                     beforeSend:function(){  
+                          $('#insert').val("Inserting");  
+                     },  
+                     success:function(data){  
+                          $('#insert_form')[0].reset();  
+                          $('#add_data_Modal').modal('hide');  
+                          $('#employee_table').html(data);  
+                     }  
+                });  
+           }  
+      });  
+      $(document).on('click', '.view_data', function(){  
+           var employee_id = $(this).attr("id");  
+           if(employee_id != '')  
+           {  
+                $.ajax({  
+                     url:"select.php",  
+                     method:"POST",  
+                     data:{employee_id:employee_id},  
+                     success:function(data){  
+                          $('#employee_detail').html(data);  
+                          $('#dataModal').modal('show');  
+                     }  
+                });  
+           }            
+      });  
+ });  
  </script>

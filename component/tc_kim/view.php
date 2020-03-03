@@ -25,7 +25,7 @@
   <h2 align="center">ใบขออนุมัติสอนชดเชย</h2>
   <p align="right" >วันที่ 26 เดือน พฤศจิกายน พ.ศ. 2562</p>
   <p>เรียน ขออนุมัติชดเชย</p>
-  <p>เรียน <select class="" id="country" name='country_id'>
+  <p>เรียน <select class="" id="country" name=''>
   <option value="">Select Country</option>
   </select></p>
   <p> &nbsp;&nbsp;&nbsp; &nbsp; เนื่องด้วยข้าพเจ้า นาย
