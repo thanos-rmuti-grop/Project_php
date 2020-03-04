@@ -255,6 +255,7 @@ if ($result = $mysqli -> query("SELECT * FROM `teaching` WHERE 1 order by `day_i
         }
 
         ?>
+<<<<<<< HEAD
    
      <tr>
         <td>
@@ -322,8 +323,80 @@ if ($result = $mysqli -> query("SELECT * FROM `teaching` WHERE 1 order by `day_i
    
 }*/?>
 <table class="table table-bordered">
+=======
+>>>>>>> e54df5eed935e9cc97f823bd32ea43e074cb2581
+   
+     <tr>
+        <td>
+            <?php echo $countdays; ?>
+            
+        </td>
+    
+                 <?php  echo $i." is i <br>";
+                        echo $starttime[$i]." startime<br>";
+                        echo $stday[$i]." stday<br>";
+                        echo $time[$i]." time<br>";
+                        echo $counttime." countime<br>";
+                        echo $endtime[$i]." end<br>";
+                        
+                        while($counttime < 15 ){ echo $i." is i <br>";  ?>
+
+<<<<<<< HEAD
+=======
+                       <?php 
+                       if($starttime[$i] < $endtime[$i]  && $starttime[$i] == $counttime){
+                           ?>
+                        
+                        <td colspan="<?php echo $time[$i]; ?>">รวมมม</td>
+                        
+                        <?php  
+                        echo "...".$counttime."...<br>";
+                        echo "value of time is ".$time[$i]."<br>";
+                        
+                        $counttime = $endtime[$i]+1; 
+                        echo $countdays." counday before if<br>";
+                        echo $stday[$i]." stday befor if<br>";
+                       
+                        if(($countdays[$i]) == $stday[$i+1]){
+                            
+                            $starttime[$i] = $starttime[$i+1];
+                            $endtime[$i] = $endtime[$i+1];
+                            $time[$i] = $endtime[$i] - $starttime[$i]+1;
+                            
+                          
+                }       
+                
+                       }
+                       
+                       
+                       
+                       ?>
+                    
+                            
+                            
+                        <td>
+                            <?php echo $counttime; 
+                            
+                            ?>
+                        </td>
+                    <?php  
+                    
+                        $counttime++;
+                        
+                    }
+                    
+                    
+                    $counttime = 1;//เริ่มนับเวลาใหม่
+                   
+       
+    $i++;
+
+   
+}*/?>
+<table border="1" width="50%" hieght align="center">
    
 
+>>>>>>> e54df5eed935e9cc97f823bd32ea43e074cb2581
     <tr >
     <td>วัน</td>
     <td value="1">08.00</td>

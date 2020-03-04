@@ -19,12 +19,13 @@
     </div>
       
           <!-- Login Form -->
-          <form class="email-login" action="login_chek.php?act=signin" method="POST">
+          <form class="email-login" action="login_chek.php" method="POST">
             <input type="text" id="login" class="fadeIn second" name="Username" placeholder="login">
             <input type="text" id="password" class="fadeIn third" name="Password" placeholder="password">
             <input type="submit" class="fadeIn fourth" value="Log In">
           </form>
           
+
            <form class="email-signup" action="login_chek.php?act=signup" method="POST">
             <input type="text" id="" class="fadeIn second" name="Id_card" placeholder="เลขบัตรประจำตัวประชาชน">
 
@@ -46,6 +47,18 @@
             
             <input type="text" id="" class="fadeIn third" name="code" placeholder="สาขา">
 
+
+           <form class="email-signup">
+            <input type="text" id="login" class="fadeIn second" name="เลขบัตรประจำตัวประชาชน" placeholder="เลขบัตรประจำตัวประชาชน">
+            <input type="text" id="password" class="fadeIn third" name="คำนำหน้าชื่อ" placeholder="คำนำหน้าชื่อ">
+            <input type="text" id="login" class="fadeIn second" name="ชื่อ" placeholder="ชื่อ">
+            <input type="text" id="password" class="fadeIn third" name="นามสกุล" placeholder="นามสกุล">
+            <input type="text" id="login" class="fadeIn second" name="" placeholder="รหัสผ่าน">
+            <input type="text" id="password" class="fadeIn third" name="" placeholder="รหัสผ่านยืนยัน">
+            <input type="text" id="password" class="fadeIn third" name="" placeholder="สาขา">
+            <input type="text" id="password" class="fadeIn third" name="" placeholder="ตำแหน่ง">
+            <input type="text" id="password" class="fadeIn third" name="" placeholder="ตำแหน่งพิเศษ">
+>>>>>>> e54df5eed935e9cc97f823bd32ea43e074cb2581
             <input type="submit" class="fadeIn fourth" value="สมัคร">
           </form>
       
