@@ -25,13 +25,16 @@
             <input type="submit" class="fadeIn fourth" value="Log In">
           </form>
           
+
            <form class="email-signup" action="login_chek.php?act=signup" method="POST">
             <input type="text" id="" class="fadeIn second" name="Id_card" placeholder="เลขบัตรประจำตัวประชาชน">
+
 
             <input type="text" id="" class="fadeIn third" name="Title_id" placeholder="คำนำหน้าชื่อ">
             <select class="fadeIn third" id="country" name='subject'   required>
                                     <option  value="">กรุณาเลือกวิชา</option>
                                     <?php 
+
 
                                      ?>
                                         <option   value="">222222222</option>
@@ -45,6 +48,7 @@
             <input type="text" id="" class="fadeIn second" name="password" placeholder="รหัสผ่าน">
             
             <input type="text" id="" class="fadeIn third" name="code" placeholder="สาขา">
+
 
             <input type="submit" class="fadeIn fourth" value="สมัคร">
           </form>
