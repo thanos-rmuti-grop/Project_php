@@ -49,3 +49,23 @@
 					?><script>window.location="component/login/logout.php";</script><?php
 				  	
 				  }
+				   else if ($act=='insert_room') {
+					    require_once("component/classroom/insert_room.php");
+					 
+				  	
+				  }
+				   else if ($act=='se_room') {
+					    require_once("component/classroom/se_room.php");
+					 
+				  	
+				  }
+				   else if ($act=='home') {
+					    require_once("component/home.php");
+					 
+				  	
+				  }
+				   else if ($act=='user') {
+					    require_once("component/user/index.inc.php");
+					 
+				  	
+				  }
