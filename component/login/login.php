@@ -19,7 +19,7 @@
     </div>
       
           <!-- Login Form -->
-          <form class="email-login" action="login_chek.php" method="POST">
+          <form class="email-login" action="login_chek.php?act=signin" method="POST">
             <input type="text" id="login" class="fadeIn second" name="Username" placeholder="login">
             <input type="text" id="password" class="fadeIn third" name="Password" placeholder="password">
             <input type="submit" class="fadeIn fourth" value="Log In">
@@ -58,7 +58,7 @@
             <input type="text" id="password" class="fadeIn third" name="" placeholder="สาขา">
             <input type="text" id="password" class="fadeIn third" name="" placeholder="ตำแหน่ง">
             <input type="text" id="password" class="fadeIn third" name="" placeholder="ตำแหน่งพิเศษ">
->>>>>>> e54df5eed935e9cc97f823bd32ea43e074cb2581
+
             <input type="submit" class="fadeIn fourth" value="สมัคร">
           </form>
       
