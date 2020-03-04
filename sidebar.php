@@ -56,7 +56,7 @@ session_start();
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="assets/starter.html" class="nav-link">
+                    <a href="#" class="nav-link">
                       
                       <p>Starter Page</p>
                     </a>
@@ -75,13 +75,13 @@ session_start();
                 <ul style="list-style-type: none;" class="nav nav-treeview">
                   
                   <li class="nav-item">
-                    <a href="../examples/blank.html" class="nav-link active">
+                    <a href="#" class="nav-link active">
                       
                       <p>เพิ่มผู้ใช้</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="assets/starter.html" class="nav-link">
+                    <a href="index.php?act=user" class="nav-link">
                       
                       <p>ข้อมูลผู้ใช้</p>
                     </a>
@@ -105,7 +105,7 @@ session_start();
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="assets/starter.html" class="nav-link">
+                    <a href="#" class="nav-link">
                       
                       <p>ค้นหาตารางสอน</p>
                     </a>
@@ -121,13 +121,13 @@ session_start();
                 <ul class="nav nav-treeview">
                   
                   <li class="nav-item">
-                    <a href="../examples/blank.html" class="nav-link active">
+                    <a href="#" class="nav-link active">
                       
                       <p>เพิ่มตารางเรียน</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="assets/starter.html" class="nav-link">
+                    <a href="#" class="nav-link">
                       
                       <p>ค้นหาตารางเรียน</p>
                     </a>
@@ -142,15 +142,15 @@ session_start();
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a routerLink="/classroom" class="nav-link">
+                    <a href ="index.php?act=insert_room" class="nav-link">
                       
-                      <p>ข้อมูลห้องเรียน</p>
+                      <p>เพิ่มห้องเรียน</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a  routerLink="/dataclassroom"class="nav-link active">
+                    <a  href ="index.php?act=se_room"class="nav-link active">
                       
-                      <p>เพิ่มห้องเรียน</p>
+                      <p>ค้นหาห้องเรียน</p>
                     </a>
                   </li>
                  
@@ -165,55 +165,55 @@ session_start();
                 <ul class="nav nav-treeview">
                   
                   <li class="nav-item">
-                    <a href="../examples/blank.html" class="nav-link active">
+                    <a href="#" class="nav-link active">
                       
                       <p>วันเปิดถาคเรียน</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="assets/starter.html" class="nav-link">
+                    <a href="#" class="nav-link">
                       
                       <p>วันหยุดราชการ</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="assets/starter.html" class="nav-link">
+                    <a href="#" class="nav-link">
                       
                       <p>ข้อมูลคำนวณใบเบิก</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="assets/starter.html" class="nav-link">
+                    <a href="#" class="nav-link">
                       
                       <p>ข้อมูลใบสอนแทน/สอนชดเชย</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="assets/starter.html" class="nav-link">
+                    <a href="#" class="nav-link">
                       
                       <p>อาคารเรียน</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="assets/starter.html" class="nav-link">
+                    <a href="#" class="nav-link">
                       
                       <p>สาขาวิชา</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="assets/starter.html" class="nav-link">
+                    <a href="#" class="nav-link">
                       
                       <p>กลุ่มนักศึกษา</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="assets/starter.html" class="nav-link">
+                    <a href="#" class="nav-link">
                       
                       <p>วิชา</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="assets/starter.html" class="nav-link">
+                    <a href="#" class="nav-link">
                       
                       <p>คำนำหน้า</p>
                     </a>
@@ -239,7 +239,7 @@ session_start();
                 </a>
               </li>
               <li class="nav-item">
-                <a routerLink="/home" class="nav-link">
+                <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-tasks"></i>
                   <p>จัดการเอกสาร</p>
                 </a>

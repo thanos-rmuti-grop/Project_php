@@ -2,7 +2,7 @@
 <section class="content">
 <div class="card">
   <div class="card-header">
-    <h3 class="card-title"><h1 >ระบบสอนแทน</h1></h3>
+    <h3 class="card-title"><h1 >ข้อมูลผู้ใช้</h1></h3>
   </div>
   <br>
   <div class="card-body p-1">
@@ -73,7 +73,6 @@
                                       </td>
                                   
                                       <td >
-                                      <button type="button" class="btn btn-primary "  data-toggle="modal" data-target="#exampleModal">สอนแทน</button>
                                       <input type="button" name="view" value="view" id="<?php echo $row["id"]; ?>" class="btn btn-info btn-xs view_data" />
                                     <a class="btn btn-warning btn-sm edit_data" href="#" name="" value="" id="<?php echo $data["Id_card"]; ?> ">
                                         <i class="fas fa-pencil-alt">
