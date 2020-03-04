@@ -44,21 +44,21 @@ session_start();
                                if($_SESSION['position_id']=="291"){ //admin
                                    
        
-                                Header("Location: ../../index.php?act=tc");
+                                Header("Location: ../../index.php?act=home");
         
                               }
         
                                if ($_SESSION['position_id']=="292"){  //user
                                 
 
-                                Header("Location: ../../index.php?act=tc");
+                                Header("Location: ../../index.php?act=home");
         
                                 }
 
                                if ($_SESSION['position_id']=="293"){  //officer
                                 
 
-                                Header("Location: ../../index.php?act=tc");
+                                Header("Location: ../../index.php?act=home");
         
                                 }
  

@@ -2,7 +2,7 @@
 <section class="content">
 <div class="card">
   <div class="card-header">
-    <h3 class="card-title"><h1 >ระบบสอนแทน</h1></h3>
+    <h3 class="card-title"><h1 >ค้นหาห้องเรียน</h1></h3>
   </div>
   <br>
   <div class="card-body p-1">
@@ -42,40 +42,23 @@
                             
                            
                           <tbody id="myTable">
-                          <?php foreach($result as $data){
-                            // print_r($data);
-                            ?>
+                        
                               <tr align="center">
                                    
                                       <td>
-                                      <?php if($data['Title_id']==1){
-                                        echo "ผู้ช่วยศาสตราจารย์";
-                                      }else if($data['Title_id']==2){
-                                        echo "นาย";
-                                      }else if($data['Title_id']==3){
-                                        echo "นาง";
-                                      }else if($data['Title_id']==4){
-                                        echo "อาจารย์";
-                                      }else if($data['Title_id']==5){
-                                        echo "รองศาสตราจารย์";
-                                      }else if($data['Title_id']==6){
-                                        echo "นางสาว";
-                                      }else
-                                      echo "ไม่มี";
-                                      ?>
+                                    
                                       </td>
 
                                       <td>
-                                      <?php echo $data['name']; ?>
+                                     
                                       </td>
                                       <td>
-                                      <?php echo $data['lastname']; ?>
+                                     
                                       </td>
                                   
                                       <td >
-                                      <button type="button" class="btn btn-primary "  data-toggle="modal" data-target="#exampleModal">สอนแทน</button>
-                                      <input type="button" name="view" value="view" id="<?php echo $row["id"]; ?>" class="btn btn-info btn-xs view_data" />
-                                    <a class="btn btn-warning btn-sm edit_data" href="#" name="" value="" id="<?php echo $data["Id_card"]; ?> ">
+                                      <input type="button" name="view" value="view" id="" class="btn btn-info btn-xs view_data" />
+                                    <a class="btn btn-warning btn-sm edit_data" href="#" name="" value="" id="">
                                         <i class="fas fa-pencil-alt">
                                         </i>
                                         Edit
@@ -122,64 +105,8 @@
                                      
                                      
                                   </tr>
-                                  <?php } ?>
-<div id="dataModal" class="modal fade">  
-      <div class="modal-dialog">  
-           <div class="modal-content">  
-                <div class="modal-header">  
-                     <button type="button" class="close" data-dismiss="modal">&times;</button>  
-                     <h4 class="modal-title">Employee Details</h4>  
-                </div>  
-                <div class="modal-body" id="employee_detail">  
-                </div>  
-                <div class="modal-footer">  
-                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>  
-                </div>  
-           </div>  
-      </div>  
- </div>  
- <div id="add_data_Modal" class="modal fade">  
-      <div class="modal-dialog">  
-           <div class="modal-content">  
-                <div class="modal-header">  
-                     <button type="button" class="close" data-dismiss="modal">&times;</button>  
-                     <h4 class="modal-title">แก้ไขข้อมูล</h4>  
-                </div>  
-                <div class="modal-body">  
-                     <form method="post" action="ffff.php">  
-                          <label>รหัสบัตรประชาชน</label>  
-                          <input type="text" name="Id_card" id="Id_card" class="form-control" />  
-                          <br />  
-                          <label>คำนำหน้า</label>  
-                          <textarea name="Title_id" id="Title_id" class="form-control"></textarea>  
-                          <br />  
-                          <label>ชื่อ</label>  
-                          <input type="text" name="name" id="name" class="form-control" />  
-
-                          <br />  
-                          <label>นามสกุล</label>  
-                          <input type="text" name="lastname" id="lastname" class="form-control" />  
-                          <br />  
-                          <label>รหัสผ่าน</label>  
-                          <input type="text" name="password" id="password" class="form-control" />  
-                          <br />  
-                          <label>สาขา</label>  
-                          <input type="text" name="code" id="code" class="form-control" />  
-                          <br />  
-                          <input type="hidden" name="employee_id" id="employee_id" />  
-                          <input type="submit" name="insert" id="insert" value="Insert" class="btn btn-success" />  
-                      
-                </div>  
-                <div class="modal-footer">  
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button name="insert" id="insert" value="Insert" type="submit" class="btn btn-primary" data="modal" 
-                onclick="return confirm('กรุณากด ยืนยัน เพื่อเพิ่ม')">ยืนยัน
-                </button>
-</form> 
-                </div>  
-           </div>  
-      </div>  
- </div>   
+                                 
+ 
 
                           </tbody>
                           
@@ -244,7 +171,63 @@
 
 <!-- ********************************************************************* -->
 </div>
+<div id="dataModal" class="modal fade">  
+      <div class="modal-dialog">  
+           <div class="modal-content">  
+                <div class="modal-header">  
+                     <button type="button" class="close" data-dismiss="modal">&times;</button>  
+                     <h4 class="modal-title">Employee Details</h4>  
+                </div>  
+                <div class="modal-body" id="employee_detail">  
+                </div>  
+                <div class="modal-footer">  
+                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>  
+                </div>  
+           </div>  
+      </div>  
+ </div>  
+ <div id="add_data_Modal" class="modal fade">  
+      <div class="modal-dialog">  
+           <div class="modal-content">  
+                <div class="modal-header">  
+                     <button type="button" class="close" data-dismiss="modal">&times;</button>  
+                     <h4 class="modal-title">แก้ไขข้อมูล</h4>  
+                </div>  
+                <div class="modal-body">  
+                     <form method="post" action="ffff.php">  
+                          <label>รหัสบัตรประชาชน</label>  
+                          <input type="text" name="Id_card" id="Id_card" class="form-control" />  
+                          <br />  
+                          <label>คำนำหน้า</label>  
+                          <textarea name="Title_id" id="Title_id" class="form-control"></textarea>  
+                          <br />  
+                          <label>ชื่อ</label>  
+                          <input type="text" name="name" id="name" class="form-control" />  
 
+                          <br />  
+                          <label>นามสกุล</label>  
+                          <input type="text" name="lastname" id="lastname" class="form-control" />  
+                          <br />  
+                          <label>รหัสผ่าน</label>  
+                          <input type="text" name="password" id="password" class="form-control" />  
+                          <br />  
+                          <label>สาขา</label>  
+                          <input type="text" name="code" id="code" class="form-control" />  
+                          <br />  
+                          <input type="hidden" name="employee_id" id="employee_id" />  
+                          <input type="submit" name="insert" id="insert" value="Insert" class="btn btn-success" />  
+                      
+                </div>  
+                <div class="modal-footer">  
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button name="insert" id="insert" value="Insert" type="submit" class="btn btn-primary" data="modal" 
+                onclick="return confirm('กรุณากด ยืนยัน เพื่อเพิ่ม')">ยืนยัน
+                </button>
+</form> 
+                </div>  
+           </div>  
+      </div>  
+ </div>  
 <div class="modal-footer">
 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 <button type="submit" class="btn btn-primary" data="modal" onclick="return confirm('กรุณากด ยืนยัน เพื่อเพิ่ม')">ยืนยัน</button>

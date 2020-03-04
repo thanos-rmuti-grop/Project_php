@@ -8,7 +8,7 @@ class UserModel extends BaseModel{
         }
     }
     function getUser(){
-        $sql = "SELECT * FROM `user` ORDER BY `Id_card` DESC 
+        $sql = "SELECT * FROM `user` ORDER BY `Id_card` ASC
         ";
         //ใส่ไว้สำหรับ ค้นหาข้อมูล
         if ($result = mysqli_query(static::$db,$sql, MYSQLI_USE_RESULT)) { //ถ้าเผื่อ query ข้อมูลได้ มันจะทำตามเงื่อนไขเรื่อยๆ
