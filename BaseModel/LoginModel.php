@@ -34,4 +34,35 @@ class LoginModel extends BaseModel{
         
        
     }
+    function addlogin($data = []){
+        $sql = "INSERT INTO `user`(
+            `Id_card`,
+            `Title_id`,
+            `name`,
+            `lastname`,
+            `password`,
+            `code`,
+            `position_id`
+
+        )
+        VALUES(
+            '".$data["Id_card"]."',
+            '".$data["Title_id"]."',
+            '".$data["name"]."',
+            '".$data["lastname"]."',
+            '".$data["password"]."',
+            '".$data["code"]."',
+            '292'
+         
+        );
+        ";
+        echo "<pre>";
+        print_r($sql);
+        echo "</pre>";
+         if (mysqli_query(static::$db,$sql, MYSQLI_USE_RESULT)) {
+            return 1;
+        }else {
+            return 0;
+        }
+    }
 }

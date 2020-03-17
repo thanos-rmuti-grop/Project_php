@@ -71,10 +71,10 @@
                                       <?php echo $data['code']; ?>
                                       </td>
                                       <td>
-                                      <?php echo $data['passsword']; ?>
+                                      <?php echo $data['password']; ?>
                                       </td>
                                       <td>
-                                      <?php echo $data['positin_id']; ?>
+                                      <?php echo $data['position_id']; ?>
                                       </td>
 
                                       <td>

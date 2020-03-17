@@ -30,8 +30,12 @@
 					  require_once("component/tc_tae/cannot.php");
 				  	
 				  }
-				  else if ($act=='timetable') {
-					  require_once("component/timetable/view.php");
+				  else if ($act=='table_teach') {
+					  require_once("component/table_teach/view.php");
+				  	
+				  }
+				  else if ($act=='tc_time') {
+					  require_once("component/tc_time/view.php");
 				  	
 				  }
 
@@ -47,5 +51,45 @@
 				  else if ($act=='logout') {
 					session_unset();
 					?><script>window.location="component/login/logout.php";</script><?php
+				  	
+				  }
+				   else if ($act=='insert_room') {
+					    require_once("component/classroom/insert_room.php");
+					 
+				  	
+				  }
+				   else if ($act=='se_room') {
+					    require_once("component/classroom/se_room.php");
+					 
+				  	
+				  }
+				   else if ($act=='home') {
+					    require_once("component/home.php");
+					 
+				  	
+				  }
+				   else if ($act=='user') {
+					    require_once("component/user/index.inc.php");
+					 
+				  	
+				  }
+				   else if ($act=='teahing') {
+					    require_once("component/tc_tae/teahing.php");
+					 
+				  	
+				  }
+				   else if ($act=='use') {
+					    require_once("component/tc_tae/user.php");
+					 
+				  	
+				  }
+				   else if ($act=='manage') {
+					    require_once("component/manage/view.php");
+					 
+				  	
+				  }
+				   else if ($act=='table_study') {
+					    require_once("component/table_study/view.php");
+					 
 				  	
 				  }

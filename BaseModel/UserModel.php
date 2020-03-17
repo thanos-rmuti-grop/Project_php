@@ -8,7 +8,7 @@ class UserModel extends BaseModel{
         }
     }
     function getUser(){
-        $sql = "SELECT * FROM `user` ORDER BY `Id_card` DESC 
+        $sql = "SELECT * FROM `user` ORDER BY `Id_card` ASC
         ";
         //ใส่ไว้สำหรับ ค้นหาข้อมูล
         if ($result = mysqli_query(static::$db,$sql, MYSQLI_USE_RESULT)) { //ถ้าเผื่อ query ข้อมูลได้ มันจะทำตามเงื่อนไขเรื่อยๆ
@@ -71,6 +71,38 @@ class UserModel extends BaseModel{
             return $data;
         }
     }
+    function getUser5(){
+        $sql = "SELECT * FROM `s_organization`
+        ";
+        //ใส่ไว้สำหรับ ค้นหาข้อมูล
+        if ($result = mysqli_query(static::$db,$sql, MYSQLI_USE_RESULT)) { //ถ้าเผื่อ query ข้อมูลได้ มันจะทำตามเงื่อนไขเรื่อยๆ
+            $data = [];
+            foreach($result as $row){
+                $data[] = $row;
+            }
+            // while ($row = mysqli_fetch_array($result,MYSQLI_ASSOC)){
+                
+            // }
+            $result->close();
+            return $data;
+        }
+    }
+    function getTeahing(){
+        $sql = "SELECT * FROM `teaching` ORDER BY `teacher_id` DESC
+        ";
+        //ใส่ไว้สำหรับ ค้นหาข้อมูล
+        if ($result = mysqli_query(static::$db,$sql, MYSQLI_USE_RESULT)) { //ถ้าเผื่อ query ข้อมูลได้ มันจะทำตามเงื่อนไขเรื่อยๆ
+            $data = [];
+            foreach($result as $row){
+                $data[] = $row;
+            }
+            // while ($row = mysqli_fetch_array($result,MYSQLI_ASSOC)){
+                
+            // }
+            $result->close();
+            return $data;
+        }
+    }
     function getEss_cour(){
         $sql = "SELECT * FROM `ess_course`
         ";
@@ -94,7 +126,7 @@ class UserModel extends BaseModel{
             '".$data["Title_id"]."',
             '".$data["name"]."',
             '".$data["lastname"]."',
-            '". $data["passsword"]."',
+            '".$data["passsword"]."',
             '".$data["code"]."',
             '".$data["positin_id"]."',
             '".$data["status_id"]."',
@@ -148,10 +180,8 @@ class UserModel extends BaseModel{
             `Title_id` = '".$data["Title_id"]."',
             `name` = '".$data["name"]."',
             `lastname` = '".$data["lastname"]."',
-            `passsword` = '". $data["passsword"]."',
+            `password` = '". $data["password"]."',
             `code` = '".$data["code"]."',
-            `positin_id` = '".$data["positin_id"]."',
-            `status_id` = '".$data["status_id"]."',
             `allow_id` = '".$data["allow_id"]."'
         WHERE
         `Id_card` = '".$data["Id_card"]."'
@@ -165,7 +195,8 @@ class UserModel extends BaseModel{
             
     }
     function delUser($id){
-        $sql = "DELETE FROM `user` WHERE `Id_card`='".$id."'
+        
+        $sql = "DELETE FROM `user` WHERE `Id_card` = '".$id."'
         ";
 
         

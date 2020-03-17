@@ -1,14 +1,16 @@
 
 <?php
 session_start();
+require_once('../../BaseModel/LoginModel.php');
+            $login = new LoginModel;
 
- $_POST['Username'];
- $_POST['Password'];
-
+ 
+ if($_GET['act'] == "signin") {
+  $_POST['Username'];
+  $_POST['Password'];
         if(isset($_POST['Username'])){
 				
-            require_once('../../BaseModel/LoginModel.php');
-            $login = new LoginModel;
+            
 				
                   $data['Username'] = $Username = $_POST['Username'];
                   $data['Password'] = $Password = $_POST['Password'];
@@ -44,21 +46,21 @@ session_start();
                                if($_SESSION['position_id']=="291"){ //admin
                                    
        
-                                Header("Location: ../../index.php?act=tc");
+                                Header("Location: ../../index.php?act=home");
         
                               }
         
                                if ($_SESSION['position_id']=="292"){  //user
                                 
 
-                                Header("Location: ../../index.php?act=tc");
+                                Header("Location: ../../index.php?act=home");
         
                                 }
 
                                if ($_SESSION['position_id']=="293"){  //officer
                                 
 
-                                Header("Location: ../../index.php?act=tc");
+                                Header("Location: ../../index.php?act=home");
         
                                 }
  
@@ -76,5 +78,27 @@ session_start();
  
              Header("Location: ../../index.php?act=login"); 
  
+        }}
+      
+        
+        else if($_GET['act'] == "signup") {
+        
+          echo  $data["Id_card"] = $_POST["Id_card"];?> <br> <?php
+          echo $data["Title_id"] = $_POST["Title_id"];?> <br> <?php
+          echo $data["name"] = $_POST["name"];?> <br> <?php
+          echo $data["lastname"] = $_POST["lastname"];?> <br> <?php
+          echo $data["password"] = $_POST["password"];?> <br> <?php
+          echo $data["code"] = $_POST["code"];?> <br> <?php
+     
+          $login->addlogin($data);
+          echo "<script>";
+                        echo "alert(\" สมัครสำเร็จ\");"; 
+                        echo "window.history.back()";
+                    echo "</script>";
+          
+   
+          
         }
+       
 ?>
+
