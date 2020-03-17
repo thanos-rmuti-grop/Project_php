@@ -29,6 +29,7 @@
 
         ?><script>window.location="index.php?act=user";</script><?php
 
+
     
         
     }
@@ -49,6 +50,7 @@
             $user_model -> addUser($data);
     
             ?><script>window.location="index.php?act=user";</script><?php
+
     
         
     }
@@ -92,6 +94,7 @@
        
         $user_model -> delUser($id);
         ?><script>window.location="index.php?act=user"</script><?php
+
         
     } 
 

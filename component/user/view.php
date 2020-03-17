@@ -46,6 +46,7 @@
                             // print_r($data);
                             ?>
                               <tr >
+
                                    
                                       <td>
                                       <?php if($data['Title_id']==1){
@@ -74,6 +75,7 @@
                                   
                                       <td align="center">
                                       <!-- <input type="button" name="view" value="view" id="" class="btn btn-info btn-xs view_data" /> -->
+
                                     <a class="btn btn-warning btn-sm edit_data" href="#" name="" value="" id="<?php echo $data["Id_card"]; ?> ">
                                         <i class="fas fa-pencil-alt">
                                         </i>
@@ -81,11 +83,13 @@
                                     </a>
                                     
                                     <a  class="btn btn-danger btn-sm"    href="index.php?act=user&action=delete&id=<?php echo $data['Id_card'] ?>">
+
                                         <i class="fas fa-trash">
                                         </i>
                                         
                                         Delete
                                         <script>
+
                                           function del() {
                                               swal({
                                               title: "ลบข้อมูลใช่ไหม?",
@@ -118,6 +122,7 @@
                                       </td>
                                 
                                      
+
                 
                                      
                                      
@@ -129,6 +134,7 @@
                 <div class="modal-header">  
                      <button type="button" class="close" data-dismiss="modal">&times;</button>  
                      <h4 class="modal-title">แสดงชื่อผู้ใช้</h4>  
+
                 </div>  
                 <div class="modal-body" id="employee_detail">  
                 </div>  
@@ -147,6 +153,7 @@
                 </div>  
                 <div class="modal-body">  
                      <form method="post" action="index.php?act=user&action=update">  
+
                           <label>รหัสบัตรประชาชน</label>  
                           <input type="text" name="Id_card" id="Id_card" class="form-control" />  
                           <br />  
@@ -168,6 +175,7 @@
                           <br />  
                           <input type="hidden" name="employee_id" id="employee_id" />  
                           <!-- <input type="submit" name="insert" id="insert" value="Insert" class="btn btn-success" />   -->
+
                       
                 </div>  
                 <div class="modal-footer">  
@@ -257,7 +265,9 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
+
         <h5 class="modal-title" id="exampleModalLabel"> แก้ไขผู้ใช้ </h5>
+
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

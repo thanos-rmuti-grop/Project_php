@@ -93,6 +93,7 @@ $(document).ready(function(){
                             // print_r($data);
                             ?>
                               <tr >
+
                                    
                                       <td>
                                       <?php if($data['Title_id']==1){
@@ -122,6 +123,7 @@ $(document).ready(function(){
                                       <td  align="center">
                                       <button type="button" class="btn btn-primary "  data-toggle="modal" data-target="#exampleModal">สอนแทน</button>
                                       <input type="button" name="view" value="view" id="<?php echo $data["Id_card"]; ?> " class="btn btn-info btn-xs view_data" />
+
                                     <a class="btn btn-warning btn-sm edit_data" href="#" name="" value="" id="<?php echo $data["Id_card"]; ?> ">
                                         <i class="fas fa-pencil-alt">
                                         </i>
@@ -148,6 +150,7 @@ $(document).ready(function(){
                 <div class="modal-header">  
                      <!-- <button type="button" class="close" data-dismiss="modal">&times;</button>   -->
                      <h4 class="modal-title">วิชาที่สอน</h4>  
+
                 </div>  
                 <div class="modal-body" id="employee_detail">  
                 </div>  
@@ -157,6 +160,7 @@ $(document).ready(function(){
            </div>  
       </div>  
  </div> 
+
  <div id="add_data_Modal" class="modal fade">  
       <div class="modal-dialog">  
            <div class="modal-content">  
@@ -190,6 +194,7 @@ $(document).ready(function(){
                           <br />  
                           <input type="hidden" name="employee_id" id="employee_id" />  
                           <!-- <input type="submit" name="insert" id="insert" value="Insert" class="btn btn-success" />   -->
+
                       
                 </div>  
                 <div class="modal-footer">  
@@ -413,6 +418,7 @@ function(start, end, label) {
 );
 </script>
 
+
 <script>       
 // var date = new Date();
 // date.setDate(date.getDate());
@@ -555,6 +561,7 @@ $(function() {
 	}
 });
 </script>
+
 
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>

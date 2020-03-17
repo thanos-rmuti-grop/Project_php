@@ -105,7 +105,10 @@ session_start();
                     </a>
                   </li>
                   <li class="nav-item">
+
                     <a href="index.php?act=tc_time" class="nav-link">
+
+                    
                       
                       <p>ค้นหาตารางสอน</p>
                     </a>
@@ -121,7 +124,9 @@ session_start();
                 <ul class="nav nav-treeview">
                   
                   <li class="nav-item">
+
                     <a href="index.php?act=table_study" class="nav-link active">
+
                       
                       <p>เพิ่มตารางเรียน</p>
                     </a>
@@ -142,13 +147,18 @@ session_start();
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
+
                     <a href ="index.php?act=table_study" class="nav-link">
+
                       
                       <p>เพิ่มห้องเรียน</p>
                     </a>
                   </li>
                   <li class="nav-item">
+
                     <a  href ="index.php?act=insert_room"class="nav-link active">
+
+
                       
                       <p>ค้นหาห้องเรียน</p>
                     </a>
@@ -165,13 +175,16 @@ session_start();
                 <ul class="nav nav-treeview">
                   
                   <li class="nav-item">
+
                     <a href="index.php?act=manage" class="nav-link active">
+
                       
                       <p>วันเปิดถาคเรียน</p>
                     </a>
                   </li>
                   <li class="nav-item">
                     <a href="" class="nav-link">
+                    <a href="#" class="nav-link">
                       
                       <p>วันหยุดราชการ</p>
                     </a>
@@ -239,7 +252,9 @@ session_start();
                   <p>ใบเบิก</p>
                 </a>
               </li>
+
               
+
     
               
     
