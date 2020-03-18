@@ -1,7 +1,6 @@
 <?php 
 // Include the database config file 
-$con= mysqli_connect("localhost","root","","mini_project_database_compelete");
-if(!empty($_POST["subject"])){ 
+include('BaseModel/condb.php');if(!empty($_POST["subject"])){ 
 // Fetch state data based on the specific country 
 
 
@@ -12,7 +11,7 @@ WHERE u.id_card = tc.teacher_id  AND  tc.timetable_id = t.timetable_id AND  t.co
 AND c.course_id = ".$_POST['subject'].""; 
 
 // $query = "SELECT * FROM states WHERE subject = ".$_POST['subject']." AND status = 1 ORDER BY state_name ASC"; 
-$result = mysqli_query($con, $query); 
+$result = mysqli_query($connect, $query); 
 // Generate HTML of state options list 
 if($result->num_rows > 0){ 
 echo '<option value="">กรุณาเลือก</option>'; 

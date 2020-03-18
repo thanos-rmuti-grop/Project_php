@@ -1,40 +1,8 @@
-<style>
-.pagination {
-	background: #F1334F;
-	padding: 1rem;
-	margin-bottom: 1rem;
-	text-align: center;
-	display: flex;
-	justify-content: center;
-}
-#numbers {
-	padding: 0;
-	margin: 0 2rem;
-	list-style-type: none;
-	display: flex;
-}
 
-#numbers li a {
-	color: #fff;
-	padding: .5rem 1rem;
-	text-decoration: none;
-	opacity: .7;
-}
-
-#numbers li a:hover {
-	opacity: 1;
-}
-
-#numbers li a.active {
-	opacity: 1;
-	background: #fff;
-	color: #333;
-}
-</style>
 <section class="content">
 <div class="card">
   <div class="card-header">
-    <h3 class="card-title"><h1 >ระบบสอนแทน</h1></h3>
+    <h3 class="card-title"><h1 >ค้นหาห้องเรียน</h1></h3>
   </div>
   <br>
   <div class="card-body p-1">
@@ -55,22 +23,8 @@
 <br>
 <br>
 </span>
-<script>
-$(document).ready(function(){
-  $("#myInput").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
-    $("#myTable tr").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    });
-  });
-});
-</script>
-<a class="btn btn-warning btn-sm" href="index.php?act=tc&action=teahing" name="" value="" >
-                                        <i class="fas fa-pencil-alt">
-                                        </i>
-                                        เพิ่มเวลาสอน
-                                    </a>
-        <table id="my-table" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+
+        <table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
                           <thead>
                           
                               <tr role="row" class="info btn-danger" align="center">
@@ -85,50 +39,32 @@ $(document).ready(function(){
                               </tr>
                           </thead>
                           
-                          
-
-                          
-                          <tbody id="myTable ">
-                          <?php foreach($result as $data){
-                            // print_r($data);
-                            ?>
-                              <tr >
+                            
+                           
+                          <tbody id="myTable">
+                        
+                              <tr align="center">
                                    
                                       <td>
-                                      <?php if($data['Title_id']==1){
-                                        echo "ผู้ช่วยศาสตราจารย์";
-                                      }else if($data['Title_id']==2){
-                                        echo "นาย";
-                                      }else if($data['Title_id']==3){
-                                        echo "นาง";
-                                      }else if($data['Title_id']==4){
-                                        echo "อาจารย์";
-                                      }else if($data['Title_id']==5){
-                                        echo "รองศาสตราจารย์";
-                                      }else if($data['Title_id']==6){
-                                        echo "นางสาว";
-                                      }else
-                                      echo "ไม่มี";
-                                      ?>
+                                    
                                       </td>
 
                                       <td>
-                                      <?php echo $data['name']; ?>
+                                     
                                       </td>
                                       <td>
-                                      <?php echo $data['lastname']; ?>
+                                     
                                       </td>
                                   
-                                      <td  align="center">
-                                      <button type="button" class="btn btn-primary "  data-toggle="modal" data-target="#exampleModal">สอนแทน</button>
-                                      <input type="button" name="view" value="view" id="<?php echo $data["Id_card"]; ?> " class="btn btn-info btn-xs view_data" />
-                                    <a class="btn btn-warning btn-sm edit_data" href="#" name="" value="" id="<?php echo $data["Id_card"]; ?> ">
+                                      <td >
+                                      <input type="button" name="view" value="view" id="" class="btn btn-info btn-xs view_data" />
+                                    <a class="btn btn-warning btn-sm edit_data" href="#" name="" value="" id="">
                                         <i class="fas fa-pencil-alt">
                                         </i>
                                         Edit
                                     </a>
                                     
-                                    <a  class="btn btn-danger btn-sm"  onClick="javascript:return confirm('คุณต้องการลบข้อมูลใช่หรือไม่');" href="index.php?act=tc&action=delete&id=<?php echo $data["Id_card"];?>">
+                                    <a  class="btn btn-danger btn-sm"  onclick="del()" href="#">
                                         <i class="fas fa-trash">
                                         </i>
                                         
@@ -136,79 +72,45 @@ $(document).ready(function(){
                                     </a>
                                       </td>
                                 
-                                     
+                                      <script>
+                                          function del() {
+                                              swal({
+                                              title: "ลบข้อมูลใช่ไหม?",
+                                              text: "กรุณาตรวจสอบให้ดีก่อน กดยืนยัน",
+                                              type: "warning",
+                                              showCancelButton: true,
+                                              confirmButtonColor: '#F7022E',
+                                              cancelButtonColor: '#F7022E',
+                                              confirmButtonText: 'ยืนยันการลบ!',
+                                              cancelButtonText: "ปฏิเสธการลบ",
+                                              closeOnConfirm: false,
+                                              closeOnCancel: false
+                                            },
+                                            function(isConfirm){
+                                              if (isConfirm){
+                                                swal("ลบข้อมูลสำเร็จ!", "ข้อมูลของท่านจะหายไป!", "success");
+                                                setTimeout(() => {
+                                                  window.location="index.php?act=user&action=delete&id=<?php echo $data['Id_card'] ?>";
+                                                }, 2000);
+                                                
+                                              } else {
+                                                swal("ยกเลิก", "กรุณาทำรายการใหม่", "error");
+                                                
+                                              }
+                                            });
+
+                                          }
+                                          </script>
                 
                                      
                                      
                                   </tr>
-                                  <?php } ?>
-                                  <div id="dataModal" class="modal fade">  
-      <div class="modal-dialog">  
-           <div class="modal-content">  
-                <div class="modal-header">  
-                     <!-- <button type="button" class="close" data-dismiss="modal">&times;</button>   -->
-                     <h4 class="modal-title">วิชาที่สอน</h4>  
-                </div>  
-                <div class="modal-body" id="employee_detail">  
-                </div>  
-                <div class="modal-footer">  
-                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>  
-                </div>  
-           </div>  
-      </div>  
- </div> 
- <div id="add_data_Modal" class="modal fade">  
-      <div class="modal-dialog">  
-           <div class="modal-content">  
-                <div class="modal-header">  
-                     <button type="button" class="close" data-dismiss="modal">&times;</button>  
-                     <h4 class="modal-title">แก้ไขข้อมูล</h4>  
-                </div>  
-                <div class="modal-body">  
-                     <form method="post" action="index.php?act=tc&action=update">  
-                          <label>รหัสบัตรประชาชน</label>  
-                          <input type="text" name="Id_card" id="Id_card" class="form-control"  readonly/>  
-                          <br />  
-                          <label>คำนำหน้า</label>  
-                          <input name="Title_id" id="Title_id" class="form-control" required />
-                          <br />  
-                          <label>ชื่อ</label>  
-                          <input type="text" name="name" id="name" class="form-control" required/>  
-
-                          <br />  
-                          <label>นามสกุล</label>  
-                          <input type="text" name="lastname" id="lastname" class="form-control" required/>  
-                          <br />  
-                          <label>รหัสผ่าน</label>  
-                          <input type="text" name="password" id="password" class="form-control" required/>  
-                          <br />  
-                          <label>สาขา</label>  
-                          <input type="text" name="code" id="code" class="form-control" required/>  
-                          <br />  
-                          <label>สถานะการใช้งาน</label>  
-                          <input type="text" name="allow_id" id="allow_id" class="form-control" required/>  
-                          <br />  
-                          <input type="hidden" name="employee_id" id="employee_id" />  
-                          <!-- <input type="submit" name="insert" id="insert" value="Insert" class="btn btn-success" />   -->
-                      
-                </div>  
-                <div class="modal-footer">  
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button name="insert" id="insert" value="Insert" type="submit" class="btn btn-primary" data="modal" 
-                onclick="return confirm('กรุณากด ยืนยัน เพื่อเพิ่ม')">ยืนยัน
-                </button>
-</form> 
-                </div>  
-           </div>  
-      </div>  
- </div>   
+                                 
+ 
 
                           </tbody>
                           
                           </table>
-                          <div  class="pagination">
-	<ol id="numbers"></ol>
-</div>
 
 <!-- Button trigger modal -->
 
@@ -269,7 +171,63 @@ $(document).ready(function(){
 
 <!-- ********************************************************************* -->
 </div>
+<div id="dataModal" class="modal fade">  
+      <div class="modal-dialog">  
+           <div class="modal-content">  
+                <div class="modal-header">  
+                     <button type="button" class="close" data-dismiss="modal">&times;</button>  
+                     <h4 class="modal-title">Employee Details</h4>  
+                </div>  
+                <div class="modal-body" id="employee_detail">  
+                </div>  
+                <div class="modal-footer">  
+                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>  
+                </div>  
+           </div>  
+      </div>  
+ </div>  
+ <div id="add_data_Modal" class="modal fade">  
+      <div class="modal-dialog">  
+           <div class="modal-content">  
+                <div class="modal-header">  
+                     <button type="button" class="close" data-dismiss="modal">&times;</button>  
+                     <h4 class="modal-title">แก้ไขข้อมูล</h4>  
+                </div>  
+                <div class="modal-body">  
+                     <form method="post" action="ffff.php">  
+                          <label>รหัสบัตรประชาชน</label>  
+                          <input type="text" name="Id_card" id="Id_card" class="form-control" />  
+                          <br />  
+                          <label>คำนำหน้า</label>  
+                          <textarea name="Title_id" id="Title_id" class="form-control"></textarea>  
+                          <br />  
+                          <label>ชื่อ</label>  
+                          <input type="text" name="name" id="name" class="form-control" />  
 
+                          <br />  
+                          <label>นามสกุล</label>  
+                          <input type="text" name="lastname" id="lastname" class="form-control" />  
+                          <br />  
+                          <label>รหัสผ่าน</label>  
+                          <input type="text" name="password" id="password" class="form-control" />  
+                          <br />  
+                          <label>สาขา</label>  
+                          <input type="text" name="code" id="code" class="form-control" />  
+                          <br />  
+                          <input type="hidden" name="employee_id" id="employee_id" />  
+                          <input type="submit" name="insert" id="insert" value="Insert" class="btn btn-success" />  
+                      
+                </div>  
+                <div class="modal-footer">  
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button name="insert" id="insert" value="Insert" type="submit" class="btn btn-primary" data="modal" 
+                onclick="return confirm('กรุณากด ยืนยัน เพื่อเพิ่ม')">ยืนยัน
+                </button>
+</form> 
+                </div>  
+           </div>  
+      </div>  
+ </div>  
 <div class="modal-footer">
 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 <button type="submit" class="btn btn-primary" data="modal" onclick="return confirm('กรุณากด ยืนยัน เพื่อเพิ่ม')">ยืนยัน</button>
@@ -344,18 +302,6 @@ $(document).ready(function(){
     </div>
   </div>
 </div>
-<!-- *************************************************** -->
-
-
-
-
-
-
-
-</div>
-<!-- /.col -->
-</div>
-
 
 <!-- ***************************** -->
 
@@ -392,9 +338,29 @@ $(document).ready(function(){
       </div>
 
 
+      <div class="col-md-1">
+        
+      </div>
+
+    </div>
+
+  </div>
+    
+</div>
+
+
+
+
+
+
+
+</div>
+<!-- /.col -->
+</div>
+
+
 
 </section>
-
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
 <script type="text/javascript">
 $('input[name="daterange"]').daterangepicker(
@@ -412,7 +378,36 @@ function(start, end, label) {
 }
 );
 </script>
+<script>
+$(document).ready(function () {
+    $('.editbtn').on('click', function() {
+        
+        $('#editmodal').modal('show');
 
+        var str = myTrim
+            $tr = $(this).closest('tr');
+
+            var data = $tr.children("td").map(function() {
+                return $(this).text();
+            }).get();
+
+            console.log(data);
+
+            $('#Id_card').val(myTrim(data[0]));
+            $('#Title_id').val(myTrim(data[1]));
+            $('#name').val(myTrim(data[2]));
+            $('#lastname').val(myTrim(data[3]));
+
+            
+            $('#passsword').val(myTrim(data[5]));
+            $('#code').val(myTrim(data[4]));
+            $('#positin_id').val(myTrim(data[6]));
+            $('#status_id').val(myTrim(data[7]));
+            $('#allow_id').val(myTrim(data[7]));
+            // $('#rrr').val(myTrim(data[9]));
+    });
+});
+</script>
 <script>       
 // var date = new Date();
 // date.setDate(date.getDate());
@@ -421,7 +416,7 @@ function(start, end, label) {
 //     startDate: date
 // });
         var date = new Date();
-        date.setDate(date.getDate()-365);
+        date.setDate(date.getDate()+1);
         $('#date').datepicker({ 
             startDate: date
         });
@@ -444,13 +439,11 @@ function(start, end, label) {
                 success:function(data){  
                      $('#Id_card').val(data.Id_card);  
                      $('#Title_id').val(data.Title_id);  
-                     $('#title_name').val(data.title_name);  
                      $('#name').val(data.name);  
                      $('#lastname').val(data.lastname);  
                      $('#password').val(data.password);  
-                     $('#allow_id').val(data.allow_id);  
                      $('#code').val(data.code);  
-                    
+                     $('#insert').val("Update");  
                      $('#add_data_Modal').modal('show');  
                 }  
            });  
@@ -473,89 +466,16 @@ function(start, end, label) {
       });  
  });  
   </script>
-
-
 <script>
-                                          function del() {
-                                              swal({
-                                              title: "ลบข้อมูลใช่ไหม?",
-                                              text: "กรุณาตรวจสอบให้ดีก่อน กดยืนยัน",
-                                              type: "warning",
-                                              showCancelButton: true,
-                                              confirmButtonColor: '#F7022E',
-                                              cancelButtonColor: '#F7022E',
-                                              confirmButtonText: 'ยืนยันการลบ!',
-                                              cancelButtonText: "ปฏิเสธการลบ",
-                                              closeOnConfirm: false,
-                                              closeOnCancel: false
-                                            },
-                                            function(isConfirm){
-                                              if (isConfirm){
-                                                swal("ลบข้อมูลสำเร็จ!", "ข้อมูลของท่านจะหายไป!", "success");
-                                                setTimeout(() => {
-                                                  alert(bodyx)
-                                                  window.location="index.php?act=tc&action=delete&id=";
-                                                }, 2000);
-                                                
-                                              } else {
-                                                swal("ยกเลิก", "กรุณาทำรายการใหม่", "error");
-                                                
-                                              }
-                                            });
-
-                                          }
-                                          </script>
-                                          <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-<script>
-// Basic example
-$(function() {
-	const rowsPerPage = 3;
-	const rows = $('#my-table tbody tr');
-	const rowsCount = rows.length;
-	const pageCount = Math.ceil(rowsCount / rowsPerPage); // avoid decimals
-	const numbers = $('#numbers');
-	
-	// Generate the pagination.
-	for (var i = 0; i < pageCount; i++) {
-		numbers.append('<li><a href="#">' + (i+1) + '</a></li>');
-	}
-		
-	// Mark the first page link as active.
-	$('#numbers li:first-child a').addClass('active');
-
-	// Display the first set of rows.
-	displayRows(1);
-	
-	// On pagination click.
-	$('#numbers li a').click(function(e) {
-		var $this = $(this);
-		
-		e.preventDefault();
-		
-		// Remove the active class from the links.
-		$('#numbers li a').removeClass('active');
-		
-		// Add the active class to the current link.
-		$this.addClass('active');
-		
-		// Show the rows corresponding to the clicked page ID.
-		displayRows($this.text());
-	});
-	
-	// Function that displays rows for a specific page.
-	function displayRows(index) {
-		var start = (index - 1) * rowsPerPage;
-		var end = start + rowsPerPage;
-		
-		// Hide all rows.
-		rows.hide();
-		
-		// Show the proper rows for this page.
-		rows.slice(start, end).show();
-	}
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
 });
 </script>
-
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
