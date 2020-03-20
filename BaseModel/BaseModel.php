@@ -4,7 +4,7 @@ abstract class BaseModel{
     protected $host="localhost";
     protected $username="root";
     protected $password="";
-    protected $db_name="mini_project_database_compelete";
+    protected $db_name="minipro2";
 	function __construct(){
         static::$db = mysqli_connect($host, $username, $password, $db_name);
         if (mysqli_connect_errno())

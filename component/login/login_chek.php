@@ -5,9 +5,10 @@ require_once('../../BaseModel/LoginModel.php');
             $login = new LoginModel;
 
  
- if($_GET['act'] == "signin") {
+ if(isset($_GET['act']) == "signin") {
   $_POST['Username'];
   $_POST['Password'];
+
         if(isset($_POST['Username'])){
 				
             
@@ -43,7 +44,7 @@ require_once('../../BaseModel/LoginModel.php');
                             //   $_SESSION["user"] = $row["fname"]." ";
                             //   $_SESSION["Userlevel"] = $row["Userlevel"];
         
-                               if($_SESSION['position_id']=="291"){ //admin
+                               if($_SESSION['position_id']=="1"){ //admin
                                    
        
                                 Header("Location: ../../index.php?act=home");

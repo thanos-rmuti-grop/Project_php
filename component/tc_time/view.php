@@ -47,148 +47,122 @@
 
       <div class="col-md-10">
       
-<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">เพิ่มข้อมูลอาจารย์</button> -->
+<!-- ************************************************************************************* -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+$('#country').on('change', function(){
+var countryID = $(this).val();
+if(countryID){
+$.ajax({
+type:'POST',
+url:'ajax/ajaxSearch_TC.php',
+data:'country_id='+countryID,
+success:function(html){
+$('#state').html(html);
+$('#city').html('<option value="">เลือกอาจารย์</option>'); 
+}
+}); 
+}else{
+$('#state').html('<option value="">Select country first</option>');
+$('#city').html('<option value="">Select state first</option>'); 
+}
+});
+$('#state').on('change', function(){
+var stateID = $(this).val();
+if(stateID){
+$.ajax({
+type:'POST',
+url:'ajax/ajaxSearch_TC.php',
+data:'state_id='+stateID,
+success:function(html){
+$('#city').html(html);
+}
+}); 
+}else{
+$('#city').html('<option value="">Select state first</option>'); 
+}
+});
+});
+</script>
+<!-- ************************************************************* -->
 
 
-        
 
 
-<!-- Button trigger modal -->
+<!-- start xml -->
+<script>
+function showUser(str) {
+  if (str=="") {
+    document.getElementById("txtHint").innerHTML="";
+    return;
+  }
+  if (window.XMLHttpRequest) {
+    // code for IE7+, Firefox, Chrome, Opera, Safari
+    xmlhttp=new XMLHttpRequest();
+  } else { // code for IE6, IE5
+    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xmlhttp.onreadystatechange=function() {
+    if (this.readyState==4 && this.status==200) {
+      document.getElementById("txtHint").innerHTML=this.responseText;
+    }
+  }
+  xmlhttp.open("GET","xml/getuser.php?q="+str,true);
+  xmlhttp.send();
+}
+</script>
+<!-- end xml -->
+<?php 
 
-<!-- Modal -->
+// Include the database config file 
+include_once 'BaseModel/condb.php'; 
+// Fetch all the country data 
+$query = "SELECT * FROM `s_organization`"; 
+$result1 = mysqli_query($connect, $query);
+?>
 
 
+ <select id="country" name='country_id' >
+<option >เลือกสาขา</option>
+
+<?php while($row = mysqli_fetch_array($result1))
+{
+echo'<option value="'.$row['code'].'">'.$row["name"].'</option>';
+}
+?>
+</select></p>
+
+<!-- ************************************************************* -->
+<select  id="state" name="users" onchange="showUser(this.value)">
+<option>กรุณาเลือกอาจารย์</option>
+</select>
+<!-- <input type="submit" value="Search"> -->
+
+<br>
+<!-- <form>
+<select name="users" onchange="showUser(this.value)">
+<option value="">Select a person:</option>
+<option value="1469900298947">พรภัสสร</option>
+<option value="3249900298946">ทิพา</option>
+<option value="1469900298945">ประกาย</option>
+
+</select>
+</form> -->
+
+<div id="txtHint"><b>คลิกเพื่อแสดงตาราง</b></div>
+
+
+<br>    
+
+</script>
 <!-- *************************************************** -->
-<?php 
-$mysqli = new mysqli("localhost","root","","mini_project_database_compelete");
-error_reporting (E_ALL ^ E_NOTICE);
-                                     
 
-//
-$datalenght = 0;
-// Check connection
-if ($mysqli -> connect_errno) {
-  echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
-  exit();
-}
-if ($result = $mysqli -> query("SELECT *
-FROM teaching as t NATURAL JOIN user as u NATURAL JOIN title NATURAL JOIN timetable as ti NATURAL JOIN ess_course  as cr
-WHERE  t.teacher_id = u.id_card and u.title_id = title.title_id and ti.course_id = cr.course_id and t.timetable_id = ti.timetable_id 
-and  t.code = '1733' /* สาขา*/
-and cr.course_id ='7995' /*วิชา */
-and u.id_card = '3249900298946' /*อาจารย์*/
 
-order by t.day_id ,t.period_begin asc"))    {
-    foreach($result as $data){
-        $title[$datalenght] = $data['title_short'];
-        $tcfname[$datalenght]  = $data['name'];
-        $tclname[$datalenght]  = $data['lastname'];
-        $teaching[$datalenght]  = $data['teaching_id'];
-        $starttime[$datalenght]  =  $data['period_begin'];
-        $endtime[$datalenght]    =  $data['period_end'];
-        $stday[$datalenght]    = $data['day_id'];
-        $crouse[$datalenght]  = $data['COURSE_TITLE'];
-        $col[$datalenght] = $endtime[$datalenght] - $starttime[$datalenght]+1;
-        $datalenght++;
 
-    }
-}
-?>
-
-<?php $days = array("อาทิตย์","จันทร์","อังคาร","พุธ","พฤหัสบดี","ศุกร์","เสาร์");  
-    //$time = array("08.00","09.00","10.00","11.00","12.00","13.00","14.00","15.00","16.00","17.00","18.00","19.00","20.00","21.00");
-    $countdays = 0;
-    $counttime =1;
-  
-    
-    ?>
-    
 <div class="row">
-<table class="table table-bordered";>
-   
 
-   <thead bgcolor="#f45b69">
-       <th colspan="3">วัน</th>
-  
-       <th scope="col" value="1">08.00</th>
-       <th scope="col" value="2">09.00</th>
-       <th scope="col" value="3">10.00</th>
-       <th scope="col" value="4">11.00</th>
-       <th scope="col" value="5">12.00</th>
-       <th scope="col" value="6">13.00</th>
-       <th scope="col" value="7">14.00</th>
-       <th scope="col" value="8">15.00</th>
-       <th scope="col" value="9">16.00</th>
-       <th scope="col" value="10">17.00</th>
-       <th scope="col" value="10">18.00</th>
-       <th scope="col" value="11">19.00</th>
-       
-   </thead> 
-    <br>
-<?php 
-//for($i = 0; $i < $datalenght ; $i++ ){
-   // echo " This is I ".$i." <br>";
-    
-    for($day = 0 ; $day < 7 ; $day++){
-           
-       ?> <tr>    <th  scope="row"> <?php echo $days[$day];?> </th>  <?php 
-
-            
-  
-        for($time = 0 ; $time < 14 ; $time++){
-           
-           ?> <td>
-            <?php           
-                            for($i = 0; $i < $datalenght ; $i++ ) {
-                                
-                                if($day == $stday[$i] && $starttime[$i] == $time){
-                                   
-                                    ?> 
-                                            
-                                            <td align="center" bgcolor="#bfff00" colspan="<?php echo $col[$i] ?> "><?php
-                                       echo $crouse[$i]."<br>".$title[$i]." ".$tcfname[$i]." ".$tclname[$i]."<br>";
-                                        if($time == $starttime[$i+1] && $day == $stday[$i+1]){
-                                      echo " ".$title[$i+1]." ".$tcfname[$i+1]." ".$tclname[$i+1]."<br>";
-                                    }
-                                    error_reporting (E_ALL ^ E_NOTICE);
-                                     
-                                              
-                                
-                                           
-                                            
-                                       /* foreach($stday as $value){
-                                            if($day == $value){
-                                                    foreach($teaching as $tec){
-                                                        if($starttime[$i] == $time){
-                                                        echo $tec." ";
-                                                            }
-                                                    }
-                                                
-                                                
-                                            }
-                                        }*/
-                                      ?>
-                                      
-                                      
-                                      </td> 
-                                        <?php $time = $endtime[$i]+1?>
-                                        
-                                    <?php
-                                }
-                            }
-                        
-               ?> 
-           
-           </td> <?php
-        }
-       ?> </tr><?php 
-    }
-//}
-?>
-</table>
-
-</tr>
-     </table>
    </div>
    </div>
       <div class="col-md-1">
