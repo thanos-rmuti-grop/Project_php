@@ -49,6 +49,10 @@ order by t.day_id ,t.period_begin asc"))    {
         $crouse_code[$datalenght]  = $data['COURSE_CODE'];
         $std[$datalenght]  = $data['std_id'];
         $class[$datalenght]  = $data['class_id'];
+<<<<<<< Updated upstream
+=======
+        $id[$datalenght] = $data['teacher_id'];
+>>>>>>> Stashed changes
         $col[$datalenght] = $endtime[$datalenght] - $starttime[$datalenght]+1;
         $datalenght++;
 
@@ -70,7 +74,11 @@ order by t.day_id ,t.period_begin asc"))    {
    
 
    <thead bgcolor="#CCFFCC">
+<<<<<<< Updated upstream
        <th colspan="3">วัน</th>
+=======
+       <th >วัน</th>
+>>>>>>> Stashed changes
   
        <th scope="col" value="1">08.00</th>
        <th scope="col" value="2">09.00</th>
@@ -84,6 +92,11 @@ order by t.day_id ,t.period_begin asc"))    {
        <th scope="col" value="10">17.00</th>
        <th scope="col" value="10">18.00</th>
        <th scope="col" value="11">19.00</th>
+<<<<<<< Updated upstream
+=======
+       <th scope="col" value="12">20.00</th>
+       <th scope="col" value="13">21.00</th>
+>>>>>>> Stashed changes
        
    </thead> 
     <br>
@@ -97,9 +110,15 @@ order by t.day_id ,t.period_begin asc"))    {
 
             
   
+<<<<<<< Updated upstream
         for($time = 0 ; $time < 14 ; $time++){
            
            ?> <td>
+=======
+        for($time = 1 ; $time <= 14 ; $time++){
+           
+           ?> 
+>>>>>>> Stashed changes
             <?php           
                             for($i = 0; $i < $datalenght ; $i++ ) {
                                 
@@ -109,8 +128,18 @@ order by t.day_id ,t.period_begin asc"))    {
                                             
                                             <td align="left" bgcolor="#F6FF33" colspan="<?php echo $col[$i] ?> "><?php
                                        echo "[".$crouse_code[$i]."] ".$crouse[$i]."<br>";
+<<<<<<< Updated upstream
                                        echo  "(".$std[$i].") ห้อง ".$class[$i]."<br>".$title[$i]." ".$tcfname[$i]." ".$tclname[$i]."<br>";?>
 <div align="right" ><a href="#"><i class="fas fa-user-edit"></i></a></div>
+=======
+                                       echo  "(".$std[$i].") ห้อง ".$class[$i]."<br>".$title[$i]." ".$tcfname[$i]." ".$tclname[$i]."<br>";
+                                            $tid =  $id[$i]; ?>
+
+<div align="right" ><a class="edit_data" id="<?php echo $tid ?>" href="#"> <i class="fas fa-user-edit "></i></a>
+
+<a class="edit_data" id="<?php echo $tid ?>" href="#"> <i class="fas fa-user-slash"></i> </a></div> 
+
+>>>>>>> Stashed changes
 <?php
                                         if($time == $starttime[$i+1] && $day == $stday[$i+1]){
                                       echo " ".$title[$i+1]." ".$tcfname[$i+1]." ".$tclname[$i+1]."<br>";
@@ -134,7 +163,11 @@ order by t.day_id ,t.period_begin asc"))    {
                                       ?>
                                       
                                       
+<<<<<<< Updated upstream
                                       </td> 
+=======
+                                       </td> 
+>>>>>>> Stashed changes
                                         <?php $time = $endtime[$i]+1?>
                                         
                                     <?php
@@ -143,15 +176,112 @@ order by t.day_id ,t.period_begin asc"))    {
                         
                ?> 
            
+<<<<<<< Updated upstream
            </td> <?php
+=======
+           <td>  </td> <?php
+>>>>>>> Stashed changes
         }
        ?> </tr><?php 
     }
 //}
 ?>
+<<<<<<< Updated upstream
+=======
+ <div id="add_data_Modal" class="modal fade">  
+      <div class="modal-dialog">  
+           <div class="modal-content">  
+                <div class="modal-header">  
+                     <button type="button" class="close" data-dismiss="modal">&times;</button>  
+                     <h4 class="modal-title">แก้ไขข้อมูล</h4>  
+                </div>  
+                <div class="modal-body">  
+                     <form method="post" action="index.php?act=tc_time&action=update_time">  
+
+                          <label>รหัสบัตรประชาชน</label>  
+                          <input type="text" name="Id_card" id="Id_card" class="form-control" />  
+                          <br />  
+                          <label>คำนำหน้า</label>  
+                          <textarea name="Title_id" id="Title_id" class="form-control"></textarea>  
+                          <br />  
+                          <label>ชื่อ</label>  
+                          <input type="text" name="name" id="name" class="form-control" />  
+
+                          <br />  
+                          <label>นามสกุล</label>  
+                          <input type="text" name="lastname" id="lastname" class="form-control" />  
+                          <br />  
+                          <label>รหัสผ่าน</label>  
+                          <input type="text" name="password" id="password" class="form-control" />  
+                          <br />  
+                          <label>สาขา</label>  
+                          <input type="text" name="code" id="code" class="form-control" />  
+                          <br />  
+                          <input type="hidden" name="employee_id" id="employee_id" />  
+                          <!-- <input type="submit" name="insert" id="insert" value="Insert" class="btn btn-success" />   -->
+
+                      
+                </div>  
+                <div class="modal-footer">  
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button name="insert" id="insert" value="Insert" type="submit" class="btn btn-primary" data="modal" 
+                onclick="return confirm('กรุณากด ยืนยัน เพื่อเพิ่ม')">ยืนยัน
+                </button>
+</form> 
+                </div>  
+           </div>  
+      </div>  
+ </div> 
+ <script>
+   $(document).ready(function(){  
+      $('#add').click(function(){  
+           $('#insert').val("Insert");  
+           $('#insert_form')[0].reset();  
+      });  
+      $(document).on('click', '.edit_data', function(){  
+           var employee_id = $(this).attr("id");  
+           $.ajax({  
+                url:"ajax/fetch.php",  
+                method:"POST",  
+                data:{employee_id:employee_id},  
+                dataType:"json",  
+                success:function(data){  
+                     $('#Id_card').val(data.Id_card);  
+                     $('#Title_id').val(data.Title_id);  
+                     $('#name').val(data.name);  
+                     $('#lastname').val(data.lastname);  
+                     $('#password').val(data.password);  
+                     $('#code').val(data.code);  
+                     $('#insert').val("Update");  
+                     $('#add_data_Modal').modal('show');  
+                }  
+           });  
+      });  
+      
+      $(document).on('click', '.view_data', function(){  
+           var employee_id = $(this).attr("id");  
+           if(employee_id != '')  
+           {  
+                $.ajax({  
+                     url:"ajax/select.php",  
+                     method:"POST",  
+                     data:{employee_id:employee_id},  
+                     success:function(data){  
+                          $('#employee_detail').html(data);  
+                          $('#dataModal').modal('show');  
+                     }  
+                });  
+           }            
+      });  
+ });  
+  </script>
+>>>>>>> Stashed changes
 </body>
 </html>
 
 
 
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes

@@ -151,7 +151,7 @@
                                     <label for="DepartmentInput2">วิชา</label>
                                     <!-- name="subject" รอไว้ -->
                                     <select class="form-control" id="country" name='subject'   required>
-                                    <option  value="">กรุณาเลือกวิชา</option>
+                                    <option  value="">กรุณาเลือกอาจารย์</option>
                                     <?php foreach($ess_cour as $data){
 
                                      ?>

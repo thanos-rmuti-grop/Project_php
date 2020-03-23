@@ -35,7 +35,7 @@
 				  	
 				  }
 				  else if ($act=='tc_time') {
-					  require_once("component/tc_time/view.php");
+					  require_once("component/tc_time/index.inc.php");
 				  	
 				  }
 

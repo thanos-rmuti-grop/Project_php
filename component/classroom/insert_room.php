@@ -3,7 +3,7 @@
 <?php 
 // Include the database config file 
 // Fetch all the country data
-$con= mysqli_connect("localhost","root","","mini_project_database_compelete");
+$con= mysqli_connect("localhost","root","","minipro2");
 
 $query1 = "SELECT * FROM `s_organization` WHERE code  not LIKE '%0'"; 
 $result1 = mysqli_query($con, $query1);

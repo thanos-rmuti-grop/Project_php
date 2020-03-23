@@ -1,6 +1,6 @@
 <?php 
 // Include the database config file 
-$con= mysqli_connect("localhost","root","","mini_project_database_compelete");
+$con= mysqli_connect("localhost","root","","minipro2");
 if(!empty($_POST["country_id"])){ 
 // Fetch state data based on the specific country 
 $query = "SELECT * FROM user as u , title as t WHERE  u.title_id = t.title_id and code = ".$_POST['country_id']." "; 

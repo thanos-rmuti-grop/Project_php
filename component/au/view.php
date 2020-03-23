@@ -36,16 +36,16 @@
             
         </table>
         
-        ภาคเรียนที่ <select class="" id="state" name="state_id">
+        ภาคเรียนที่ <select class="" id="" name="state_id">
            <option value="">------</option>
             </select>
-           ปีการศึกษา <select class="" id="city" name="city_id">
+           ปีการศึกษา <select class="" id="" name="city_id">
             <option value="">-------</option>
             </select>
-            ประเภทใบเบิก<select class="" id="city" name="city_id">
+            ประเภทใบเบิก<select class="" id="" name="city_id">
                 <option value="">------</option>
                 </select>
-                เดือน<select class="" id="city" name="city_id">
+                เดือน<select class="" id="" name="city_id">
                     <option value="">------</option>
                     </select>
   </div>
