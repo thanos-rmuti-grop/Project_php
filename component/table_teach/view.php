@@ -189,7 +189,7 @@
 </head>
 <body>
 <?php 
-$mysqli = new mysqli("localhost","root","","mini_project_database_compelete");
+$mysqli = new mysqli("localhost","root","","minipro2");
 
 
 //

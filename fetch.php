@@ -1,6 +1,6 @@
 <?php  
  //fetch.php  
- $connect = mysqli_connect("localhost", "root", "", "mini_project_database_compelete");  
+ $connect = mysqli_connect("localhost", "root", "", "minipro2");  
  if(isset($_POST["employee_id"]))  
  {  
       $query = "SELECT * FROM `user` WHERE `Id_card` = '".$_POST["employee_id"]."'";  
