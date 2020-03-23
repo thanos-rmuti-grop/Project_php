@@ -146,15 +146,15 @@ session_start();
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="index.php?act=table_study" class="nav-link">
+              <a href="index.php?act=classroom&action=showroom" class="nav-link active">
 
-                <p>เพิ่มห้องเรียน</p>
+                <p>ค้นหาห้องเรียน</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="index.php?act=insert_room" class="nav-link active">
+              <a href="index.php?act=classroom" class="nav-link active">
 
-                <p>ค้นหาห้องเรียน</p>
+                <p>เพิ่มห้องเรียน</p>
               </a>
             </li>
 

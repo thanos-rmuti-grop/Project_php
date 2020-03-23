@@ -1,15 +1,3 @@
-
-
-<?php 
-// Include the database config file 
-// Fetch all the country data
-$con= mysqli_connect("localhost","root","","mini_project_database_compelete");
-
-$query1 = "SELECT * FROM `s_organization` WHERE code  not LIKE '%0'"; 
-$result1 = mysqli_query($con, $query1);
-?>
-
-
 <script type="text/javascript">
 $(document).ready(function(){
     $("#selectbuilding").change(function(){
@@ -17,57 +5,53 @@ $(document).ready(function(){
        $("#textresults").val(selectedCountry+"-");
     });
   $("#selectss").change(function() { 
-      var countryID = $(this).val();
-                $("#textval").val(countryID);
+      var major = $(this).val();
+                $("#textval").val(major);
             });
 
-$('#country').on('change', function(){
-var countryID = $(this).val();
-if(countryID){
+$('#fac').on('change', function(){
+var fac = $(this).val();
+if(fac){
 $.ajax({
 type:'POST',
 url:'ajax/ajaxData1.php',
-data:'country_id='+countryID,
+data:'fac='+fac,
 success:function(html){
-$('#state').html(html);
-$('#city').html('<option value="">เลือกสาขาวิชาก่อน</option>'); 
+$('#major').html(html);
 }
 }); 
 }else{
-$('#state').html('<option value="">เลือกสาขาวิชาก่อน</option>');
-$('#city').html('<option value="">Select state first</option>'); 
+$('#major').html('<option value="">เลือกสาขาวิชาก่อน</option>'); 
 }
 });
-$('#state').on('change', function(){
-var stateID = $(this).val();
-if(stateID){
+$('#major').on('change', function(){
+var major = $(this).val();
+if(major){
 $.ajax({
 type:'POST',
-url:'ajaxData1.php',
-data:'state_id='+stateID,
+url:'ajax/ajaxData1.php',
+data:'major='+major,
 success:function(html){
-$('#city').html(html);
+$('#keeper').html(html);
+
 }
 }); 
 }else{
-$('#city').html('<option value="">Select state first</option>'); 
+$('#keeper').html('<option value="">เลือกสาขาวิชาก่อน</option>');
+
 }
 });
 
+
 document.getElementById('b4').onclick = function(){
-	swal({
-		title: "คุณต้องการเพิ่มห้องเรียนใช่ไหม",
-		type: "warning",
-		showCancelButton: true,
-		confirmButtonColor: '#DD6B55',
-		confirmButtonText: 'ตกลง',
-        cancelButtonText: "ยกเลิก",
-        closeOnConfirm: false,
-		closeOnCancel: false
-	},
-	function(){
-		swal("สำเร็จ!", "", "success");
-	});
+	
+  //confirm("Press a button!");
+//   if(confirm("Press a button!")){
+//     alert("5asdasd55");
+//   }else{
+//       alert("5555");
+//   }
+
 };
 
 });
@@ -83,7 +67,7 @@ document.getElementById('b4').onclick = function(){
 
 
 
-
+     <form action="index.php?act=classroom&action=add" method="post">
     <div class="col">
         <div class="card" style="width: 100% ">
             <div class="col">
@@ -98,28 +82,15 @@ document.getElementById('b4').onclick = function(){
 
                     </td>
                     <td>
-                        <?php 
-           
-            $getbuilding = "SELECT * FROM `building` ";
-            $result = $con->query($getbuilding);
-
-      
-          ?>
-                        <select id="selectbuilding" class="form-control w-25" style="width: fit-content;" >
+                       
+                        <select id="selectbuilding" class="form-control w-25" style="width: fit-content;"  name="building_id">
                         <option value="">กรุณาเลือก</option>
                         <?php
-                        foreach($result as $row){
-                        
-                           
-
-                            echo '<option value="'.$row['building_id'].'">'.$row['building_id'].' '.$row['building_name'].'</option>';
-                             
-                             
-                              
+                            foreach($building as $row){
+                                echo '<option value="'.$row['building_id'].'">'.$row['building_id'].' '.$row['building_name'].'</option>';
                             }
-                            
-                           
-                           ?> 
+                        ?>
+                      
                         </select>
 
                     </td>
@@ -132,7 +103,7 @@ document.getElementById('b4').onclick = function(){
                         </h6>
                     </td>
                     <td>
-                        <input id="textresults" class="form-control w-25" type="text">
+                        <input id="textresults" name="class_id" class="form-control w-25" type="text">
                         
                     </td>
                 </tr>
@@ -143,22 +114,31 @@ document.getElementById('b4').onclick = function(){
                         </h6>
                     </td>
                     <td>
-                        <input class="form-control w-25" type="text">
+                        <input  name="class_name" class="form-control w-25" type="text">
                     </td>
+                </tr>
+                <tr>
+                <td> <h6>คณะ</h6>
+                </td>
+                <td>  <select class="form-control w-25" name = "fac" id ="fac"> 
+                <option >กรุณาเลือก</option>
+                <?php
+                foreach($fac as $row){
+                    echo '<option value="'.$row['code'].'">'.$row['name'].'</option>';
+                }
+                ?>
+                </select> </td>
                 </tr>
                 <tr>
                     <td>
                         <h6>สาขาวิชา</h6>
                     </td>
                     <td>
-                 <select class="form-control w-25" id="country" name='country_id'>
-<option value="">กรุณาเลือก</option>
-<?php while($row = mysqli_fetch_array($result1))
-{
-echo'<option value="'.$row['code'].'">'.$row["name"].'</option>';
-}
-?>
-</select>
+                   
+                 <select class="form-control w-25" id="major" name='code'>
+                <option value="">กรุณาเลือก</option>
+                
+                    </select>
                     </td>
                 </tr>
                 <tr>
@@ -166,9 +146,9 @@ echo'<option value="'.$row['code'].'">'.$row["name"].'</option>';
                         <h6>ผู้ดูแล</h6>
                     </td>
                     <td>
-                    <select class="form-control w-25" id='state' name='state_id'>
-<option value="">กรุณาเลือก</option>
-</select>
+                    <select class="form-control w-25" id='keeper' name='keeper'>
+                    <option value="">กรุณาเลือก</option>
+                    </select>
                     </td>
                 </tr>
                 <tr>
@@ -178,7 +158,7 @@ echo'<option value="'.$row['code'].'">'.$row["name"].'</option>';
                         </h6>
                     </td>
                     <td>
-                        <input class="form-control w-25" type="text">
+                        <input class="form-control w-25" type="text" name="amount">
                     </td>
                 </tr>
                 <tr>
@@ -186,32 +166,27 @@ echo'<option value="'.$row['code'].'">'.$row["name"].'</option>';
                         <h6> ประเภทห้อง</h6>
                     </td>
                     <td>
-                    <?php
-                    $kind  = "SELECT * FROM kind ";
-                     $kind1 = $con->query($kind);
-
-                    
-                    ?>
-                        <select class="form-control w-25">
+                  
+                        <select class="form-control w-25" name="kind_id">
                             <option>กรุณาเลือก</option>
                             <?php
-                            foreach($kind1 as $row){
-                                echo'<option value="'.$row['kind_id'].'">'.$row["kind_name"].'</option>';
+                            foreach( $kind as $row){
+                                echo '<option value="'.$row['kind_id'].'">'.$row['kind_name'].'</option>';
                             }
-                            
-                            
                             ?>
+                            
                         </select>
                     </td>
                 </tr>
                 <tr>
                     <br>
                     <td>
-                        <button id="b4" type="submit" class="btn btn-primary">ตกลง</button> &nbsp;
+                        <button id="b4" type="submit"  class="btn btn-primary">ตกลง</button> &nbsp;
                         <button type="button" class="btn btn-secondary">ยกเลิก</button>
                     </td>
+                    <br>
                 </tr>
-
+                <br>
 
 
 
@@ -227,7 +202,7 @@ echo'<option value="'.$row['code'].'">'.$row["name"].'</option>';
 
     </div>
 
-
+    </form>
 
 
  
