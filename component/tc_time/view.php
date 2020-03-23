@@ -150,13 +150,8 @@ echo'<option value="'.$row['code'].'">'.$row["name"].'</option>';
 
 </select>
 </form> -->
-<<<<<<< Updated upstream
-
-<div id="txtHint"><b>คลิกเพื่อแสดงตาราง</b></div>
-=======
 <br><br>
 <div id="txtHint"></div>
->>>>>>> Stashed changes
 
 
 <br>    

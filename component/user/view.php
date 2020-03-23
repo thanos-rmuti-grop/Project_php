@@ -15,7 +15,7 @@
 
       <div class="col-md-10">
       
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">เพิ่มข้อมูลอาจารย์</button>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">เพิ่มข้อมูล</button>
 
 <span style="float:right;" >
 <input   id="myInput" type="text" placeholder="Search..">
