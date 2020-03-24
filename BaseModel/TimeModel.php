@@ -24,26 +24,38 @@ class TimeModel extends BaseModel{
         }
     }
  
-    function add_cannot($data = []){
-        $sql = "INSERT INTO `cannot_teach`(
-            `cannot_teach_id`,
-            `Date_begin`,
-            `Date_end`,
-            `Note`,
+    function add_teaching($data = []){
+        $sql = "INSERT INTO `teaching`(
+            `teaching_id`,
+            `timetable_id`,
+            `teacher_id`,
+            `class_id`,
+            `day_id`,
+            `period_begin`,
+            `period_end`,
+            `theory_hours`,
+            `practical_hours`,
             `code`,
-            `Teacher_id`,
-            `Semester`,
-            `Academic_year`
+            `start_date`,
+            `end_date`,
+            `std_nor`,
+            `std_spc`
         )
         VALUES(
             NULL,
-            '".$data["start"]."',
-            '".$data["end"]."',
-            '".$data["Note"]."',
-            '1733',
-            '6851',
-            '2',
-            '2562'
+            '".$data["timetable_id"]."',
+            '".$data["teacher_id"]."',
+            '".$data["class_id"]."',
+            '".$data["day_id"]."',
+            '".$data["period_begin"]."',
+            '".$data["period_end"]."',
+            '".$data["theory_hours"]."',
+            '".$data["practical_hours"]."',
+            '".$data["code"]."',
+            '".$data["start_date"]."',
+            '".$data["end_date"]."',
+            '1',
+            '1'
         );
         ";
         echo "<pre>";

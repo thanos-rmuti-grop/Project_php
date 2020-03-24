@@ -32,7 +32,7 @@ if ($mysqli -> connect_errno) {
 if ($result = $mysqli -> query("SELECT *
 FROM teaching as t NATURAL JOIN user as u NATURAL JOIN title NATURAL JOIN timetable as ti NATURAL JOIN ess_course  as cr NATURAL JOIN classroom as c
 WHERE  t.teacher_id = u.id_card and u.title_id = title.title_id and ti.course_id = cr.course_id and t.timetable_id = ti.timetable_id and t.class_id = c.class_id
-and  t.teacher_id = '".$q."'
+and  U.id_card = '".$q."'
 
 
 
@@ -99,11 +99,9 @@ order by t.day_id ,t.period_begin asc"))    {
 
             
   
-
         for($time = 1 ; $time <= 14 ; $time++){
            
            ?> 
-
             <?php           
                             for($i = 0; $i < $datalenght ; $i++ ) {
                                 

@@ -15,7 +15,7 @@
 
       <div class="col-md-10">
       
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">เพิ่มข้อมูลอาจารย์</button>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">เพิ่มข้อมูล</button>
 
 <span style="float:right;" >
 <input   id="myInput" type="text" placeholder="Search..">
@@ -80,7 +80,7 @@
                                         Edit
                                     </a>
                                     
-                                    <a  class="btn btn-danger btn-sm"    href="index.php?act=user&action=delete&id=<?php echo $data['Id_card'] ?>">
+                                    <a  class="btn btn-danger btn-sm"  (onclick)="del() "  href="index.php?act=user&action=delete&id=<?php echo $data['Id_card'] ?>">
                                         <i class="fas fa-trash">
                                         </i>
                                         
