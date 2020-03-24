@@ -49,10 +49,7 @@ order by t.day_id ,t.period_begin asc"))    {
         $crouse_code[$datalenght]  = $data['COURSE_CODE'];
         $std[$datalenght]  = $data['std_id'];
         $class[$datalenght]  = $data['class_id'];
-<<<<<<< Updated upstream
-=======
         $id[$datalenght] = $data['teacher_id'];
->>>>>>> Stashed changes
         $col[$datalenght] = $endtime[$datalenght] - $starttime[$datalenght]+1;
         $datalenght++;
 
@@ -64,7 +61,6 @@ order by t.day_id ,t.period_begin asc"))    {
     //$time = array("08.00","09.00","10.00","11.00","12.00","13.00","14.00","15.00","16.00","17.00","18.00","19.00","20.00","21.00");
     $countdays = 0;
     $counttime =1;
-  
     
     ?>
 
@@ -74,11 +70,7 @@ order by t.day_id ,t.period_begin asc"))    {
    
 
    <thead bgcolor="#CCFFCC">
-<<<<<<< Updated upstream
-       <th colspan="3">วัน</th>
-=======
        <th >วัน</th>
->>>>>>> Stashed changes
   
        <th scope="col" value="1">08.00</th>
        <th scope="col" value="2">09.00</th>
@@ -92,11 +84,8 @@ order by t.day_id ,t.period_begin asc"))    {
        <th scope="col" value="10">17.00</th>
        <th scope="col" value="10">18.00</th>
        <th scope="col" value="11">19.00</th>
-<<<<<<< Updated upstream
-=======
        <th scope="col" value="12">20.00</th>
        <th scope="col" value="13">21.00</th>
->>>>>>> Stashed changes
        
    </thead> 
     <br>
@@ -110,15 +99,11 @@ order by t.day_id ,t.period_begin asc"))    {
 
             
   
-<<<<<<< Updated upstream
-        for($time = 0 ; $time < 14 ; $time++){
-           
-           ?> <td>
-=======
+
         for($time = 1 ; $time <= 14 ; $time++){
            
            ?> 
->>>>>>> Stashed changes
+
             <?php           
                             for($i = 0; $i < $datalenght ; $i++ ) {
                                 
@@ -128,10 +113,6 @@ order by t.day_id ,t.period_begin asc"))    {
                                             
                                             <td align="left" bgcolor="#F6FF33" colspan="<?php echo $col[$i] ?> "><?php
                                        echo "[".$crouse_code[$i]."] ".$crouse[$i]."<br>";
-<<<<<<< Updated upstream
-                                       echo  "(".$std[$i].") ห้อง ".$class[$i]."<br>".$title[$i]." ".$tcfname[$i]." ".$tclname[$i]."<br>";?>
-<div align="right" ><a href="#"><i class="fas fa-user-edit"></i></a></div>
-=======
                                        echo  "(".$std[$i].") ห้อง ".$class[$i]."<br>".$title[$i]." ".$tcfname[$i]." ".$tclname[$i]."<br>";
                                             $tid =  $id[$i]; ?>
 
@@ -139,7 +120,6 @@ order by t.day_id ,t.period_begin asc"))    {
 
 <a class="edit_data" id="<?php echo $tid ?>" href="#"> <i class="fas fa-user-slash"></i> </a></div> 
 
->>>>>>> Stashed changes
 <?php
                                         if($time == $starttime[$i+1] && $day == $stday[$i+1]){
                                       echo " ".$title[$i+1]." ".$tcfname[$i+1]." ".$tclname[$i+1]."<br>";
@@ -163,11 +143,7 @@ order by t.day_id ,t.period_begin asc"))    {
                                       ?>
                                       
                                       
-<<<<<<< Updated upstream
-                                      </td> 
-=======
                                        </td> 
->>>>>>> Stashed changes
                                         <?php $time = $endtime[$i]+1?>
                                         
                                     <?php
@@ -176,18 +152,12 @@ order by t.day_id ,t.period_begin asc"))    {
                         
                ?> 
            
-<<<<<<< Updated upstream
-           </td> <?php
-=======
            <td>  </td> <?php
->>>>>>> Stashed changes
         }
        ?> </tr><?php 
     }
 //}
 ?>
-<<<<<<< Updated upstream
-=======
  <div id="add_data_Modal" class="modal fade">  
       <div class="modal-dialog">  
            <div class="modal-content">  
@@ -275,13 +245,8 @@ order by t.day_id ,t.period_begin asc"))    {
       });  
  });  
   </script>
->>>>>>> Stashed changes
 </body>
 </html>
 
 
 
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes

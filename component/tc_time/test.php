@@ -134,8 +134,4 @@ order by t.day_id ,t.period_begin asc"))    {
        ?> </tr><?php 
     }
 //}
-<<<<<<< Updated upstream
 ?>
-=======
-?>
->>>>>>> Stashed changes
