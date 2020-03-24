@@ -9,8 +9,8 @@
                           <br />  
                           <label>รหัสอาจารย์</label>  
                           <select name="teacher_id" id="teacher_id " class="form-control" required >
-                          <option value="3249900298946">3249900298946</option>
-                          <option value="1469900298947">1469900298947</option>
+                          <option value="3249900298946">ทิพา</option>
+                          <option value="1469900298947">ประกาย</option>
                           </select>
                           <br />  
                           <label>ห้องสอน</label>  

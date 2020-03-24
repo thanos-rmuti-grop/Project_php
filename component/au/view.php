@@ -9,8 +9,6 @@
   <!-- start ajex -->
   
   
-  
-  
   <div class="col">
   <div class="card" style="width: 100%">
   <div class="col">

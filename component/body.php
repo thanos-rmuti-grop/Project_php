@@ -30,8 +30,8 @@
 					  require_once("component/tc_tae/cannot.php");
 				  	
 				  }
-				  else if ($act=='table_teach') {
-					  require_once("component/table_teach/view.php");
+				  else if ($act=='tc_teach') {
+					  require_once("component/tc_time/tc.php");
 				  	
 				  }
 				  else if ($act=='tc_time') {
@@ -86,6 +86,11 @@
 				  }
 				   else if ($act=='table_study') {
 					    require_once("component/table_study/view.php");
+					 
+				  	
+				  }
+				   else if ($act=='search_study') {
+					    require_once("component/table_study/search.php");
 					 
 				  	
 				  }

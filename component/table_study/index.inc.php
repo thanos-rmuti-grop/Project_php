@@ -65,27 +65,6 @@
     
         
     }
-    else if( $_GET['action'] == "add_teaching") {
-        
-
-      echo  $data["class_id"] = $_POST["class_id"]; 
-      echo  $data["timetable_id"] = $_POST["timetable_id"]; 
-      
-      echo  $data["start_date"] = $_POST["start_date"]; 
-      echo $data["end_date"] = $_POST["end_date"];
-      echo $data["practical_hours"] = $_POST["practical_hours"];
-      echo $data["theory_hours"] = $_POST["theory_hours"];
-      echo $data["period_end"] = $_POST["period_end"];
-      echo $data["period_begin"] = $_POST["period_begin"];
-      echo $data["day_id"] = $_POST["day_id"];
-      echo $data["teacher_id"] = $_POST["teacher_id"];
-      echo $data["code"] = $_POST["code"];
-
-        $time_model -> add_teaching($data);
-           
-
-        
-    }
     else if( $_GET['action'] == "delete") {
 
         $id = $_GET['id'];

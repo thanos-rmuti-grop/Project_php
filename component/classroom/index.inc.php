@@ -26,7 +26,7 @@
       $data["code"] = $_POST["code"];
       $data["building_id"] = $_POST["building_id"];
       $classroom->insertclass($data);
-      ?><script>window.location="index.php?act=insert_room&action=showclassroom";</script><?php
+      ?><script>window.location="index.php?act=classroom&action=showroom";</script><?php
 
          
      }
@@ -37,6 +37,13 @@
       require_once($path.'showclassroom.php');
 
          
+     }
+     else if($_GET['action'] == "delete"){
+      $id =  $_GET['id'];
+       $classroom-> delete_classroom($id);
+    
+       ?><script>window.location="index.php?act=classroom&action=showroom";</script><?php
+     
      }
 
   

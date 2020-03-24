@@ -11,9 +11,9 @@ if(!empty($_POST["country_id"])){
 
 
     $query = "SELECT name,u.id_card 
-    FROM teaching as t NATURAL JOIN user as u NATURAL JOIN title NATURAL JOIN timetable as ti NATURAL JOIN ess_course  as cr
+    FROM teaching as t NATURAL JOIN user as u NATURAL JOIN title NATURAL JOIN timetable as ti NATURAL JOIN ess_course  as cr 
     WHERE  t.teacher_id = u.id_card and u.title_id = title.title_id and ti.course_id = cr.course_id and t.timetable_id = ti.timetable_id 
-    and  t.code = ".$_POST['country_id']." 
+    and  u.code = ".$_POST['country_id']." 
 
 GROUP BY name
 order by t.day_id ,t.period_begin ASC"; 

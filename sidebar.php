@@ -102,7 +102,7 @@ session_start();
           <ul class="nav nav-treeview">
 
             <li class="nav-item">
-              <a href="index.php?act=table_teach" class="nav-link active">
+              <a href="index.php?act=tc_teach" class="nav-link active">
 
                 <p>เพิ่มตารางสอน</p>
               </a>
@@ -131,7 +131,7 @@ session_start();
               </a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a href="index.php?act=search_study" class="nav-link">
 
                 <p>ค้นหาตารางเรียน</p>
               </a>
@@ -146,13 +146,13 @@ session_start();
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="index.php?act=classroom&action=showroom" class="nav-link active">
+              <a href="index.php?act=classroom&action=showroom" class="nav-link ">
 
                 <p>ค้นหาห้องเรียน</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="index.php?act=classroom" class="nav-link active">
+              <a href="index.php?act=classroom" class="nav-link ">
 
                 <p>เพิ่มห้องเรียน</p>
               </a>

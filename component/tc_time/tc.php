@@ -1,4 +1,4 @@
-<form action="test.php" method="POST">
+<form action="index.php?act=tc_time&action=add_teaching" method="POST">
 <div class="container">
     <br><br>
         <table class="table table-bordered">
@@ -9,13 +9,11 @@
                 <td align="right">ภาคเรียน/ปีการศึกษา :</td>
                 <td width="70%">
                     ภาคเรียนที่ <select name="" class="select-css">
-                        <option>-- กรุณาเลือก --</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
 
                     </select>
                     ปีการศึกษา <select name="" class="select-css">
-                        <option>-- กรุณาเลือก --</option>
                         <option value="2560">2560</option>
                         <option value="2561">2561</option>
                         <option value="2562">2562</option>
@@ -27,7 +25,6 @@
                 <td align="right"> คณะ :</td>
                 <td width="70%">
                     <select name="" class="select-css">
-                        <option>-- กรุณาเลือก --</option>
                         <option value="name1">วิศวกรรมศาสตร์</option>
                         <option value="name2">บริหาร</option>
 
@@ -40,6 +37,7 @@
                 <select name="code" id="code" class="form-control" required >
                           <option value="1720">กลุ่มสาขาวิศวกรรมโยธา</option>
                           <option value="1730">สาขาวิศวกรรมไฟฟ้า</option>
+                          <option value="1733">สาขาวิศวกรรมคอมพิวเตอร์</option>
                 </select> 
                 </td>
             </tr>
@@ -58,7 +56,6 @@
                 <td align="right">วิชา :</td>
                 <td width="70%">
                     <select class="select-cos">
-                        <option>-- กรุณาเลือก --</option>
                         <option></option>
                         <option></option>
 
@@ -69,10 +66,9 @@
             <tr>
                 <td align="right">กลุ่มนักศึกษา :</td>
                 <td width="70%">
-                    <select class="select-css">
-                        <option>-- กรุณาเลือก --</option>
-                        <option></option>
-                        <option></option>
+                    <select name="timetable_id" class="select-css">
+                        <option value="4495">4495</option>
+                        <option value="4497">4497</option>
 
                     </select>
                 </td>
@@ -82,18 +78,17 @@
                 <td align="right">วัน/เวลา :</td>
                 <td width="70%">
                     วัน <select name="day_id" class="select-css">
-                        <option value="">-- กรุณาเลือก --</option>
+                        <option value="0">อาทิตย์</option>
                         <option value="1">จันทร์</option>
                         <option value="2">อังคาร</option>
                         <option value="3">พุธ</option>
                         <option value="4">พฤหัสบดี</option>
                         <option value="5">ศุกร์</option>
                         <option value="6">เสาร์</option>
-                        <option value="7">อาทิตย์</option>
+                       
 
                     </select>
                     คาบเรียนเริ่มต้น <select name="period_begin" class="select-css">
-                        <option>-- กรุณาเลือก --</option>
                         <option>1</option>
                         <option>2</option>
                         <option>3</option>
@@ -105,10 +100,11 @@
                         <option>9</option>
                         <option>10</option>
                         <option>11</option>
+                        <option>12</option>
+                        <option>13</option>
                     </select>
 
                     คาบเรียนสิ้นสุด <select name="period_end" class="select-css">
-                        <option>-- กรุณาเลือก --</option>
                         <option>1</option>
                         <option>2</option>
                         <option>3</option>
@@ -120,6 +116,8 @@
                         <option>9</option>
                         <option>10</option>
                         <option>11</option>
+                        <option>12</option>
+                        <option>13</option>
                     </select>
                 </td>
             </tr>
@@ -128,7 +126,6 @@
                 <td width="70%">
 
                     ชั่วโมงทฤษฏี <select name="theory_hours" class="select-css">
-                        <option>-- กรุณาเลือก --</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -141,7 +138,6 @@
                     </select>
 
                     ชั่วโมงปฏิบัติ <select name="practical_hours" class="select-css">
-                        <option>-- กรุณาเลือก --</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -172,9 +168,9 @@
             <tr bgcolor="#f45b69">
                 <td align="right">ห้องเรียน :</td>
                 <td width="70%">
-                <select name="Title_id" id="" class="form-control" required >
-                          <option value="4495">4495</option>
-                          <option value="4497">4497</option>
+                <select name="class_id" id="" class="form-control" >
+                          <option value="36-408">36-408</option>
+                          <option value="36-408">36-408</option>
                 </select>
                 </td>
         </table>
