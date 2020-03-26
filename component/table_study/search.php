@@ -34,7 +34,7 @@
 <section class="content">
 <div class="card">
   <div class="card-header">
-    <h3 class="card-title"><h1 >ตารางสอน</h1></h3>
+    <h3 class="card-title"><h1 >ค้นหาตารางเรียน</h1></h3>
   </div>
   <br>
   <div class="card-body p-1">
@@ -57,7 +57,7 @@ var countryID = $(this).val();
 if(countryID){
 $.ajax({
 type:'POST',
-url:'ajax/ajaxSearch_TC.php',
+url:'ajax/ajaxstu.php',
 data:'country_id='+countryID,
 success:function(html){
 $('#state').html(html);
@@ -122,8 +122,22 @@ include_once 'BaseModel/condb.php';
 $query = "SELECT * FROM `s_organization`"; 
 $result1 = mysqli_query($connect, $query);
 ?>
+<p>
+<select id="ssemester" name='semester' >
+<option >ภาคเรียน</option>
+<option name="1">1</option>
+<option name="2">2</option>
+<option name="3">3</option>
+</select> 
 
-
+<select id="aacademic_year" name='academic_year' >
+<option>ปีการศึกษา</option>
+<option name="2560">2560</option>
+<option name="2561">2561</option>
+<option name="2562">2562</option>
+<option name="2563">2563</option>
+</select>
+</p>
  <select id="country" name='country_id' >
 <option >เลือกสาขา</option>
 
@@ -136,7 +150,7 @@ echo'<option value="'.$row['code'].'">'.$row["name"].'</option>';
 
 <!-- ************************************************************* -->
 <select  id="state" name="users" onchange="showUser(this.value)">
-<option>กรุณาเลือกอาจารย์</option>
+<option>กรุณาเลือกกลุ่มเรียน</option>
 </select>
 <!-- <input type="submit" value="Search"> -->
 
@@ -395,4 +409,3 @@ $(function() {
 
 <script src="https://cdn.jsdeliv    r.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-<h1>ค้นหาตารางเรียน</h1>

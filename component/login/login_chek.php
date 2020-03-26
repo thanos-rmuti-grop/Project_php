@@ -5,9 +5,9 @@ require_once('../../BaseModel/LoginModel.php');
             $login = new LoginModel;
 
  
- if(isset($_GET['act']) == "signin") {
-  $_POST['Username'];
-  $_POST['Password'];
+  if(isset($_GET['act']) == "signin") {
+  // $_POST['Username'];
+  // $_POST['Password'];
 
         if(isset($_POST['Username'])){
 				
@@ -36,7 +36,7 @@ require_once('../../BaseModel/LoginModel.php');
  
                 //   $result = mysqli_query($conn,$sql);
 				
-                  if($_SESSION['allow_id']=='1'){
+                  if($_SESSION['status_id']=='1'){
                       
  
                             //   $row = mysqli_fetch_array($login_user);
@@ -82,8 +82,7 @@ require_once('../../BaseModel/LoginModel.php');
         }}
       
         
-        else if($_GET['act'] == "signup") {
-        
+        if($_GET['act'] == "signup") {
           echo  $data["Id_card"] = $_POST["Id_card"];?> <br> <?php
           echo $data["Title_id"] = $_POST["Title_id"];?> <br> <?php
           echo $data["name"] = $_POST["name"];?> <br> <?php
@@ -92,6 +91,7 @@ require_once('../../BaseModel/LoginModel.php');
           echo $data["code"] = $_POST["code"];?> <br> <?php
      
           $login->addlogin($data);
+
           echo "<script>";
                         echo "alert(\" สมัครสำเร็จ\");"; 
                         echo "window.history.back()";

@@ -151,7 +151,12 @@
                           <input type="text" name="Id_card" id="Id_card" class="form-control" />  
                           <br />  
                           <label>คำนำหน้า</label>  
-                          <textarea name="Title_id" id="Title_id" class="form-control"></textarea>  
+                          <!-- <input type="text" name="Title_id" id="Title_id" class="form-control" />   -->
+                          <select class="form-control" name="Title_id" id="Title_id" required>
+                                        <option   value="" id="Title_id">กรุณาเลือก วิชาก่อน</option>
+                                        
+                          </select>
+                          <!-- <textarea name="Title_id" id="Title_id" class="form-control"></textarea>   -->
                           <br />  
                           <label>ชื่อ</label>  
                           <input type="text" name="name" id="name" class="form-control" />  
@@ -165,6 +170,14 @@
                           <br />  
                           <label>สาขา</label>  
                           <input type="text" name="code" id="code" class="form-control" />  
+                          <label>สถานะ</label>  
+                          <select class="form-control" name="status_id"  required>
+                                        <option   value="<?php echo $_SESSION['status_id']; ?>" ><?php if($_SESSION['status_id']==1){
+                                          echo "อนุญาติสิท";
+                                        } ?></option>
+                                        <option value="">ไม่อนุญาติ</option>
+                                        
+                          </select>
                           <br />  
                           <input type="hidden" name="employee_id" id="employee_id" />  
                           <!-- <input type="submit" name="insert" id="insert" value="Insert" class="btn btn-success" />   -->
@@ -460,6 +473,8 @@ $(document).ready(function () {
                      $('#lastname').val(data.lastname);  
                      $('#password').val(data.password);  
                      $('#code').val(data.code);  
+                     $('#allow_id').val(data.allow_id);  
+                     $('#status_id').val(data.status_id);  
                      $('#insert').val("Update");  
                      $('#add_data_Modal').modal('show');  
                 }  

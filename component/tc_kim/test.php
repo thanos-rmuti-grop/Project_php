@@ -16,7 +16,7 @@ if ($mysqli -> connect_errno) {
   exit();
 }
 if ($result = $mysqli -> query("SELECT *
-FROM teaching as t NATURAL JOIN user as u NATURAL JOIN title NATURAL JOIN timetable as ti NATURAL JOIN ess_course  as cr NATURAL JOIN classroom as c
+FROM teaching as t ,user as u , title , timetable as ti , ess_course  as cr , classroom as c
 WHERE  t.teacher_id = u.id_card and u.title_id = title.title_id and ti.course_id = cr.course_id and t.timetable_id = ti.timetable_id and t.class_id = c.class_id
 and  t.teacher_id = '1469900298945'
 

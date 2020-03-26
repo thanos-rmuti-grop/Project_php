@@ -8,15 +8,15 @@
             <tr bgcolor="#f45b69">
                 <td align="right">ภาคเรียน/ปีการศึกษา :</td>
                 <td width="70%">
-                    ภาคเรียนที่ <select name="" class="select-css">
+                    ภาคเรียนที่ <select name="semester" class="select-css">
                         <option value="1">1</option>
                         <option value="2">2</option>
 
                     </select>
-                    ปีการศึกษา <select name="" class="select-css">
-                        <option value="2560">2560</option>
-                        <option value="2561">2561</option>
+                    ปีการศึกษา <select name="academic_year" class="select-css">
+                       
                         <option value="2562">2562</option>
+                        <option value="2560">2563</option>
 
                     </select>
                 </td>
@@ -34,10 +34,11 @@
             <tr bgcolor="#f45b69">
                 <td align="right">สาขาวิชา :</td>
                 <td width="70%">
-                <select name="code" id="code" class="form-control" required >
+                <select name="code"  class="form-control" required >
+                <option value="1733">สาขาวิศวกรรมคอมพิวเตอร์</option>
+
                           <option value="1720">กลุ่มสาขาวิศวกรรมโยธา</option>
                           <option value="1730">สาขาวิศวกรรมไฟฟ้า</option>
-                          <option value="1733">สาขาวิศวกรรมคอมพิวเตอร์</option>
                 </select> 
                 </td>
             </tr>
@@ -55,9 +56,9 @@
             <tr bgcolor="#f45b69">
                 <td align="right">วิชา :</td>
                 <td width="70%">
-                    <select class="select-cos">
-                        <option></option>
-                        <option></option>
+                    <select class="select-cos" name="course_id">
+                        <option value="1123">เครื่องมือวัดและควบคุม</option>
+                        <option value="7949">ไมโครคอนโทรลเลอร์</option>
 
                     </select>
                 </td>
@@ -66,10 +67,9 @@
             <tr>
                 <td align="right">กลุ่มนักศึกษา :</td>
                 <td width="70%">
-                    <select name="timetable_id" class="select-css">
-                        <option value="4495">4495</option>
-                        <option value="4497">4497</option>
-
+                    <select name="std_id" class="select-css">
+                        <option value="6117231">6117231</option>
+                        <option value="6117231">6117231</option>
                     </select>
                 </td>
             </tr>

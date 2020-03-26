@@ -120,9 +120,17 @@ function showUser(str) {
 include_once 'BaseModel/condb.php'; 
 // Fetch all the country data 
 $query = "SELECT * FROM `s_organization`"; 
-$result1 = mysqli_query($connect, $query);
+$code = mysqli_query($connect, $query);
 ?>
+ <select id="country" name='country_id' >
+<option >เลือกสาขา</option>
 
+<?php while($row = mysqli_fetch_array($code))
+{
+echo'<option value="'.$row['code'].'">'.$row["name"].'</option>';
+}
+?>
+</select></p>
 
  <select id="country" name='country_id' >
 <option >เลือกสาขา</option>

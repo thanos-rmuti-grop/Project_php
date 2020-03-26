@@ -25,81 +25,45 @@ class TimeModel extends BaseModel{
     }
  
     function add_teaching($data = []){
-        $sql = "INSERT INTO `teaching`(
-            `teaching_id`,
-            `timetable_id`,
-            `teacher_id`,
-            `class_id`,
-            `day_id`,
-            `period_begin`,
-            `period_end`,
-            `theory_hours`,
-            `practical_hours`,
-            `code`,
-            `start_date`,
-            `end_date`,
-            `std_nor`,
-            `std_spc`
-        )
-        VALUES(
-            NULL,
-            '".$data["timetable_id"]."',
-            '".$data["teacher_id"]."',
-            '".$data["class_id"]."',
-            '".$data["day_id"]."',
-            '".$data["period_begin"]."',
-            '".$data["period_end"]."',
-            '".$data["theory_hours"]."',
-            '".$data["practical_hours"]."',
-            '".$data["code"]."',
-            '".$data["start_date"]."',
-            '".$data["end_date"]."',
-            '1',
-            '1'
-        );
-        ";
+        $sql = "INSERT INTO timetable ( timetable_id, semester, academic_year, std_id, course_id, code) VALUES ( NULL,'".$data["semester"]."', '".$data["academic_year"]."', '".$data["std_id"]."', '".$data["course_id"]."', '".$data["code"]."');
+
+        INSERT INTO teaching( timetable_id, teacher_id, class_id, day_id, period_begin, period_end, theory_hours, practical_hours, code, start_date, end_date, std_nor, std_spc)  
+        VALUES
+( LAST_INSERT_ID(),
+'".$data["teacher_id"]."',
+'".$data["class_id"]."',
+'".$data["day_id"]."',
+'".$data["period_begin"]."',
+'".$data["period_end"]."',
+'".$data["theory_hours"]."',
+'".$data["practical_hours"]."',
+'".$data["code"]."',
+'".$data["start_date"]."',
+'".$data["end_date"]."',
+
+    NULL,
+    NULL)
+    ";
+
+
+        
+
+
+
+
         echo "<pre>";
         print_r($sql);
         echo "</pre>";
-         if (mysqli_query(static::$db,$sql, MYSQLI_USE_RESULT)) {
-            return 1;
-        }else {
-            return 0;
+        if (static::$db->multi_query($sql) === TRUE) {
+            echo "1";
+        } else {
+            echo "0";
         }
-    }
-    function upUser($data = []){
-            $sql = "UPDATE
-            `user`
-        SET
-            `Title_id` = '".$data["Title_id"]."',
-            `name` = '".$data["name"]."',
-            `lastname` = '".$data["lastname"]."',
-            `password` = '". $data["password"]."',
-            `code` = '".$data["code"]."',
-            `allow_id` = '".$data["allow_id"]."'
-        WHERE
-        `Id_card` = '".$data["Id_card"]."'
-            ";
-            //ใส่ไว้สำหรับ ค้นหาข้อมูล
-            if (mysqli_query(static::$db,$sql, MYSQLI_USE_RESULT)) {
-                return 1;
-            }else {
-                return 0;
-            }
-            
-    }
-    function delUser($id){
-        
-        $sql = "DELETE FROM `user` WHERE `Id_card` = '".$id."'
-        ";
 
         
-        if (mysqli_query(static::$db,$sql, MYSQLI_USE_RESULT)) {
-            return 1;
-        }else {
-            return 0;
-        }
     }
+    
+ 
 
 }
     ?>

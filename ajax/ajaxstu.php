@@ -22,7 +22,7 @@ order by t.day_id ,t.period_begin ASC";
 $result = mysqli_query($connect, $query); 
 // Generate HTML of state options list 
 if($result->num_rows > 0){ 
-echo '<option value="">อาจารย์</option>'; 
+echo '<option value="">กลุ่มเรียน</option>'; 
 while($row = $result->fetch_assoc()){  
 echo '<option value="'.$row['id_card'].'">'.$row['name'].'</option>'; 
 } 
@@ -50,7 +50,7 @@ echo '<option value="">ไม่มีอาจารย์</option>';
 
 
 
-
+/*
 
 
 elseif(!empty($_POST["state_id"])){ 
@@ -96,5 +96,5 @@ echo '<option value="'.$row['city_id'].'">'.$row['name'].'</option>';
 }else{ 
 echo '<option value="">ไม่มีอาจารย์</option>'; 
 } 
-} 
+} */
 ?>

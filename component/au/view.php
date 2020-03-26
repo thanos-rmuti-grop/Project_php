@@ -17,41 +17,67 @@
   
   <!-- end ajex -->
       <!-- Main content -->
-      <div style="padding: 80px;">
-  <span><img height="100px" src="https://webs.rmutl.ac.th/assets/upload/images/2018/11/55_20181114104824.png" alt=""></span>
-  <p>มหาวิทยาลัยเทคโนโลยีราชมงคลอีสาน</p>
-  <h2 align="center">ใบเบิกค่าสอน</h2>
+      <div >
+      <table>
+    <tr>
+      <td>
+       <h5 >คณะ</h5>
+      </td>
+      <td>
+      <select class="form-control form-control-sm" style="width: auto;">
+      <option>Small select</option>
+      </select>
+      </td>
+      <br>
+      <td>
+      <h5 >สาขา</h5>
+      </td>
+      <td>
+      <select class="form-control form-control-sm" style="width: auto;">
+      <option>Small select</option>
+      </td>
+     
+    </tr>
+
+      </table>
   
-  <table class="table table-bordered">
-    <colgroup>
-      <col width="11%" >
-      <col  width="30%" >
-      <col width="20%" >
-      <col span="4" width="5%" >
-      <col span="4" width="5%" >
-      <col width="10%" >
-    </colgroup>
-            
-        </table>
-        
-        ภาคเรียนที่ <select class="" id="" name="state_id">
-           <option value="">------</option>
-            </select>
-           ปีการศึกษา <select class="" id="" name="city_id">
-            <option value="">-------</option>
-            </select>
-            ประเภทใบเบิก<select class="" id="" name="city_id">
-                <option value="">------</option>
-                </select>
-                เดือน<select class="" id="" name="city_id">
-                    <option value="">------</option>
-                    </select>
   </div>
+ <div style=" padding-top: 10px;">
+ <table class="table table-bordered" >
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Larry the Bird</td>
+      <td>Larry the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table>
+ </div>
       
       </div>
   </div>
   </div>
   
-  <div class="col-2">
-  </div>
+  
   
