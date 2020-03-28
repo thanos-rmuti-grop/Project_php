@@ -89,19 +89,19 @@
 
                     </select>
                     คาบเรียนเริ่มต้น <select name="period_begin" class="select-css">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                        <option>6</option>
-                        <option>7</option>
-                        <option>8</option>
-                        <option>9</option>
-                        <option>10</option>
-                        <option>11</option>
-                        <option>12</option>
-                        <option>13</option>
+                        <option value="1">08:00</option>
+                        <option value="2">09:00</option>
+                        <option value="3">10:00</option>
+                        <option value="0">11:00</option>
+                        <option value="0">12:00</option>
+                        <option value="0">13:00</option>
+                        <option value="0">14:00</option>
+                        <option value="0">15:00</option>
+                        <option value="0">16:00</option>
+                        <option value="0">17:00</option>
+                        <option value="0">18:00</option>
+                        <option value="0">19:00</option>
+                        
                     </select>
 
                     คาบเรียนสิ้นสุด <select name="period_end" class="select-css">

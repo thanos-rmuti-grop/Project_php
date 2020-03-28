@@ -119,11 +119,11 @@ function showUser(str) {
 // Include the database config file 
 include_once 'BaseModel/condb.php'; 
 // Fetch all the country data 
-$query = "SELECT * FROM `s_organization`"; 
+$query = "SELECT * FROM `s_organization` WHERE `name` LIKE 'คณะ%'"; 
 $code = mysqli_query($connect, $query);
 ?>
  <select id="country" name='country_id' >
-<option >เลือกสาขา</option>
+<option >-- เลือกคณะ --</option>
 
 <?php while($row = mysqli_fetch_array($code))
 {
@@ -132,18 +132,14 @@ echo'<option value="'.$row['code'].'">'.$row["name"].'</option>';
 ?>
 </select></p>
 
- <select id="country" name='country_id' >
-<option >เลือกสาขา</option>
+ <select id="state" name="state_id" >
+<option  >-- เลือกสาขา --</option>
 
-<?php while($row = mysqli_fetch_array($result1))
-{
-echo'<option value="'.$row['code'].'">'.$row["name"].'</option>';
-}
-?>
+
 </select></p>
 
 <!-- ************************************************************* -->
-<select  id="state" name="users" onchange="showUser(this.value)">
+<select  id="city" name="users" onchange="showUser(this.value)">
 <option>กรุณาเลือกอาจารย์</option>
 </select>
 <!-- <input type="submit" value="Search"> -->
@@ -265,39 +261,38 @@ function(start, end, label) {
 
             </script>
   <!-- // แก้ไข และ แสดง -->
-            <script>
-   $(document).ready(function(){  
+  <script>  
+ $(document).ready(function(){  
       $('#add').click(function(){  
            $('#insert').val("Insert");  
-           $('#insert_form')[0].reset();  
+           $('#show')[0].reset();  
       });  
-      $(document).on('click', '.edit_data', function(){  
+      $(document).on('click', '.show_data', function(){  
            var employee_id = $(this).attr("id");  
            $.ajax({  
-                url:"ajax/fetch.php",  
+                url:"fetch.php",  
                 method:"POST",  
                 data:{employee_id:employee_id},  
                 dataType:"json",  
                 success:function(data){  
-                     $('#Id_card').val(data.Id_card);  
-                     $('#Title_id').val(data.Title_id);  
-                     $('#title_name').val(data.title_name);  
                      $('#name').val(data.name);  
-                     $('#lastname').val(data.lastname);  
-                     $('#password').val(data.password);  
-                     $('#code').val(data.code);  
-                    
-                     $('#add_data_Modal').modal('show');  
+                     $('#address').val(data.address);  
+                     $('#gender').val(data.gender);  
+                     $('#designation').val(data.designation);  
+                     $('#age').val(data.age);  
+                     $('#employee_id').val(data.id);  
+                     $('#insert').val("Update");  
+                     $('#show_data').modal('show');  
                 }  
            });  
       });  
-      
+     
       $(document).on('click', '.view_data', function(){  
            var employee_id = $(this).attr("id");  
            if(employee_id != '')  
            {  
                 $.ajax({  
-                     url:"ajax/select.php",  
+                     url:"select.php",  
                      method:"POST",  
                      data:{employee_id:employee_id},  
                      success:function(data){  
@@ -308,7 +303,8 @@ function(start, end, label) {
            }            
       });  
  });  
-  </script>
+ </script>
+            
 <script>
 $(document).ready(function(){
   $("#myInput").on("keyup", function() {

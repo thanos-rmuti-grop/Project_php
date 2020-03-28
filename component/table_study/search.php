@@ -34,7 +34,7 @@
 <section class="content">
 <div class="card">
   <div class="card-header">
-    <h3 class="card-title"><h1 >ค้นหาตารางเรียน</h1></h3>
+    <h3 class="card-title"><h1 >ตารางสอน</h1></h3>
   </div>
   <br>
   <div class="card-body p-1">
@@ -61,7 +61,7 @@ url:'ajax/ajaxstu.php',
 data:'country_id='+countryID,
 success:function(html){
 $('#state').html(html);
-$('#city').html('<option value="">เลือกอาจารย์</option>'); 
+$('#city').html('<option value="">เลือกกลุ่มเรียน</option>'); 
 }
 }); 
 }else{
@@ -74,7 +74,7 @@ var stateID = $(this).val();
 if(stateID){
 $.ajax({
 type:'POST',
-url:'ajax/ajaxSearch_TC.php',
+url:'ajax/ajaxstu.php',
 data:'state_id='+stateID,
 success:function(html){
 $('#city').html(html);
@@ -109,9 +109,11 @@ function showUser(str) {
       document.getElementById("txtHint").innerHTML=this.responseText;
     }
   }
-  xmlhttp.open("GET","xml/getuser.php?q="+str,true);
+  xmlhttp.open("GET","xml/getstudy.php?q="+str,true);
   xmlhttp.send();
+
 }
+
 </script>
 <!-- end xml -->
 <?php 
@@ -119,37 +121,60 @@ function showUser(str) {
 // Include the database config file 
 include_once 'BaseModel/condb.php'; 
 // Fetch all the country data 
-$query = "SELECT * FROM `s_organization`"; 
-$result1 = mysqli_query($connect, $query);
+$query = "SELECT * FROM `s_organization` WHERE `name` LIKE 'คณะ%'"; 
+$code = mysqli_query($connect, $query);
 ?>
-<p>
-<select id="ssemester" name='semester' >
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form  method="POST" action="ajax/ajaxstu.php">
+  <select id="ssemester" name="semester" >
 <option >ภาคเรียน</option>
-<option name="1">1</option>
-<option name="2">2</option>
-<option name="3">3</option>
+
+<option value= "1">1</option>
+<option value= "2">2</option>
+<option value= "3">3</option>
 </select> 
-
-<select id="aacademic_year" name='academic_year' >
+<select id="aacademic_year" name='academic_year'>
 <option>ปีการศึกษา</option>
-<option name="2560">2560</option>
-<option name="2561">2561</option>
-<option name="2562">2562</option>
-<option name="2563">2563</option>
-</select>
-</p>
- <select id="country" name='country_id' >
-<option >เลือกสาขา</option>
 
-<?php while($row = mysqli_fetch_array($result1))
+<option value= "2560">2560</option>
+<option value="2561">2561</option>
+<option value="2562">2562</option>
+<option value="2563">2563</option>
+
+</select>
+<input type="submit" value="click">
+</form>
+</body>
+</html>
+
+  
+
+ <select id="country" name='country_id' >
+<option >-- เลือกคณะ --</option>
+
+<?php while($row = mysqli_fetch_array($code))
 {
 echo'<option value="'.$row['code'].'">'.$row["name"].'</option>';
 }
 ?>
 </select></p>
 
+ <select id="state" name="state_id" >
+<option  >-- เลือกสาขา --</option>
+
+
+</select></p>
+
 <!-- ************************************************************* -->
-<select  id="state" name="users" onchange="showUser(this.value)">
+<select  id="city" name="users" onchange="showUser(this.value)">
 <option>กรุณาเลือกกลุ่มเรียน</option>
 </select>
 <!-- <input type="submit" value="Search"> -->
@@ -165,6 +190,7 @@ echo'<option value="'.$row['code'].'">'.$row["name"].'</option>';
 </select>
 </form> -->
 <br><br>
+
 <div id="txtHint"></div>
 
 
@@ -407,5 +433,5 @@ $(function() {
 });
 </script>
 
-<script src="https://cdn.jsdeliv    r.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>

@@ -22,10 +22,11 @@
 					  require_once("component/tc_kim/view.php");
 				  	
 				  }
-				  else if ($act=='au') {
-					  require_once("component/au/view.php");
+				  else if ($act=='requisition') {
+					  require_once("component/requst/index.inc.php");
 				  	
 				  }
+				  
 				  else if ($act=='cannot') {
 					  require_once("component/tc_tae/cannot.php");
 				  	

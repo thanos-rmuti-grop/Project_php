@@ -43,16 +43,7 @@ $('#keeper').html('<option value="">เลือกสาขาวิชาก�
 });
 
 
-document.getElementById('b4').onclick = function(){
-	
-  //confirm("Press a button!");
-//   if(confirm("Press a button!")){
-//     alert("5asdasd55");
-//   }else{
-//       alert("5555");
-//   }
 
-};
 
 });
 </script>

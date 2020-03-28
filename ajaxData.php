@@ -19,7 +19,7 @@ while($row = $result->fetch_assoc()){
 echo '<option value="'.$row['Id_card'].'">'.$row['name'].'</option>'; 
 } 
 }else{ 
-echo '<option value="">State not available</option>'; 
+echo '<option value="">โปรดรีเฟรซ</option>'; 
 } 
 }
 
@@ -56,7 +56,7 @@ while($row = $result->fetch_assoc()){
 echo '<option value="'.$row['city_id'].'">'.$row['city_name'].'</option>'; 
 } 
 }else{ 
-echo '<option value="">City not available</option>'; 
+echo '<option value="">โปรดรีเฟรซ</option>'; 
 } 
 } 
 ?>

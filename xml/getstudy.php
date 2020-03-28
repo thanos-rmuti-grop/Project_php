@@ -18,21 +18,20 @@ th {text-align: left;}
 <body>
 
 <?php
-$q = intval($_GET['q']);
-
-
+$q = $_GET['q'];
 $mysqli = new mysqli("localhost","root","","minipro2");
 error_reporting (E_ALL ^ E_NOTICE);
-                                     
+$semester =  $_POST["semester"];
+$academic_year =  $_POST["academic_year"];                                    
 $datalenght = 0;
 if ($mysqli -> connect_errno) {
   echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
   exit();
 }
 if ($result = $mysqli -> query("SELECT *
-FROM teaching as t , user as u , title , timetable as ti , ess_course  as cr , classroom as c
-WHERE  t.teacher_id = u.id_card and u.title_id = title.title_id and ti.course_id = cr.course_id and t.timetable_id = ti.timetable_id and t.class_id = c.class_id
-and  U.id_card = '".$q."'
+FROM teaching as t , user as u , title , timetable as ti , ess_course  as cr , classroom as c , student as st
+WHERE  t.teacher_id = u.id_card and u.title_id = title.title_id and ti.course_id = cr.course_id and t.timetable_id = ti.timetable_id and t.class_id = c.class_id and st.std_id = ti.std_id
+ and  st.std_id = '".$q."'
 
 
 
@@ -112,9 +111,9 @@ order by t.day_id ,t.period_begin asc"))    {
                                             <td align="left" bgcolor="#F6FF33" colspan="<?php echo $col[$i] ?> "><?php
                                        echo "[".$crouse_code[$i]."] ".$crouse[$i]."<br>";
                                        echo  "(".$std[$i].") ห้อง ".$class[$i]."<br>".$title[$i]." ".$tcfname[$i]." ".$tclname[$i]."<br>";
-                                            $tid =  $teaching[$i]; ?>
+                                            $tid =  $id[$i]; ?>
 
-<div align="right" ><a class="show_data" id="<?php echo $tid ?>" href="#"><?php echo $tid ?> <i class="fas fa-user-edit show_data"></i></a>
+<div align="right" ><a class="edit_data" id="<?php echo $tid ?>" href="#"> <i class="fas fa-user-edit "></i></a>
 
 <a class="edit_data" id="<?php echo $tid ?>" href="#"> <i class="fas fa-user-slash"></i> </a></div> 
 
@@ -156,7 +155,7 @@ order by t.day_id ,t.period_begin asc"))    {
     }
 //}
 ?>
- <div id="show_data" class="modal fade">  
+ <div id="add_data_Modal" class="modal fade">  
       <div class="modal-dialog">  
            <div class="modal-content">  
                 <div class="modal-header">  
@@ -167,17 +166,17 @@ order by t.day_id ,t.period_begin asc"))    {
                      <form method="post" action="index.php?act=tc_time&action=update_time">  
 
                           <label>รหัสบัตรประชาชน</label>  
-                          <input type="text" name="T1" id="teaching_id" class="form-control" />  
+                          <input type="text" name="Id_card" id="Id_card" class="form-control" />  
                           <br />  
                           <label>คำนำหน้า</label>  
-                          <textarea name="T2" id="timetable_id" class="form-control"></textarea>  
+                          <textarea name="Title_id" id="Title_id" class="form-control"></textarea>  
                           <br />  
                           <label>ชื่อ</label>  
-                          <input type="text" name="T3" id="day_id" class="form-control" />  
+                          <input type="text" name="name" id="name" class="form-control" />  
 
                           <br />  
                           <label>นามสกุล</label>  
-                          <input type="text" name="practical_hours" id="day_id" class="form-control" />  
+                          <input type="text" name="lastname" id="lastname" class="form-control" />  
                           <br />  
                           <label>รหัสผ่าน</label>  
                           <input type="text" name="password" id="password" class="form-control" />  
@@ -185,7 +184,7 @@ order by t.day_id ,t.period_begin asc"))    {
                           <label>สาขา</label>  
                           <input type="text" name="code" id="code" class="form-control" />  
                           <br />  
-                          <!-- <input type="text" name="employee_id" id="employee_id" />   -->
+                          <input type="hidden" name="employee_id" id="employee_id" />  
                           <!-- <input type="submit" name="insert" id="insert" value="Insert" class="btn btn-success" />   -->
 
                       
@@ -200,38 +199,38 @@ order by t.day_id ,t.period_begin asc"))    {
            </div>  
       </div>  
  </div> 
- <script>  
- $(document).ready(function(){  
+ <script>
+   $(document).ready(function(){  
       $('#add').click(function(){  
            $('#insert').val("Insert");  
-           $('#show')[0].reset();  
+           $('#insert_form')[0].reset();  
       });  
-      $(document).on('click', '.show_data', function(){  
+      $(document).on('click', '.edit_data', function(){  
            var employee_id = $(this).attr("id");  
            $.ajax({  
-                url:"ajax/update_tc_time.php",  
+                url:"ajax/fetch.php",  
                 method:"POST",  
                 data:{employee_id:employee_id},  
                 dataType:"json",  
                 success:function(data){  
-                     $('#name').val(data.day_id);  
-                     $('#address').val(data.end_date);  
-                     $('#gender').val(data.start_date);  
-                     $('#designation').val(data.start_date);  
-                     $('#age').val(data.age);  
-                     $('#employee_id').val(data.id);  
+                     $('#Id_card').val(data.Id_card);  
+                     $('#Title_id').val(data.Title_id);  
+                     $('#name').val(data.name);  
+                     $('#lastname').val(data.lastname);  
+                     $('#password').val(data.password);  
+                     $('#code').val(data.code);  
                      $('#insert').val("Update");  
-                     $('#show_data').modal('show');  
+                     $('#add_data_Modal').modal('show');  
                 }  
            });  
       });  
-     
+      
       $(document).on('click', '.view_data', function(){  
            var employee_id = $(this).attr("id");  
            if(employee_id != '')  
            {  
                 $.ajax({  
-                     url:"select.php",  
+                     url:"ajax/select.php",  
                      method:"POST",  
                      data:{employee_id:employee_id},  
                      success:function(data){  
@@ -242,7 +241,7 @@ order by t.day_id ,t.period_begin asc"))    {
            }            
       });  
  });  
- </script>
+  </script>
 </body>
 </html>
 

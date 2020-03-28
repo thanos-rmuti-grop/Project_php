@@ -55,7 +55,7 @@ $act = $_GET['act'];
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
-  <script type="text/javascript">
+  <!-- <script type="text/javascript">
 $(document).ready(function(){
 $('#country').on('change', function(){
 var countryID = $(this).val();
@@ -90,7 +90,7 @@ $('#city').html('<option value="">Select state first</option>');
 }
 });
 });
-</script>
+</script> -->
 
 <!-- แก้ไข -->
  

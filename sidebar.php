@@ -240,7 +240,7 @@ session_start();
           </a>
         </li>
         <li class="nav-item">
-          <a href="index.php?act=au" class="nav-link">
+          <a href="index.php?act=requisition" class="nav-link">
             <i class="nav-icon fas fa-check-square"></i>
             <p>ใบเบิก</p>
           </a>
