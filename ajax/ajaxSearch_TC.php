@@ -30,24 +30,6 @@ echo '<option value="">ไม่มีอาจารย์</option>';
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 elseif(!empty($_POST["state_id"])){ 
 // Fetch city data based on the specific state 
 $query = "SELECT name,u.id_card 

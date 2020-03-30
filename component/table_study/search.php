@@ -52,6 +52,47 @@
 
 <script type="text/javascript">
 $(document).ready(function(){
+//   $('#ssemester').on('change', function(){
+// var ssemesterID = $(this).val();
+// if(ssemesterID){
+// $.ajax({
+// type:'POST',
+// url:'ajax/ajaxstu.php',
+// data:'semester='+ssemesterID,
+// }
+// });
+//   }else{
+
+//   });
+$('#ssemester').on('change', function(){
+var ssemesterID = $(this).val();
+if(ssemesterID){
+$.ajax({
+type:'POST',
+url:'ajax/ajaxstu.php',
+data:'semester='+ssemesterID,
+success:function(html){
+}
+}); 
+}else{
+
+}
+});
+$('#aacademic_year').on('change', function(){
+var aacademic_yearID = $(this).val();
+if(aacademic_yearID){
+$.ajax({
+type:'POST',
+url:'ajax/ajaxstu.php',
+data:'academic_year='+aacademic_yearID,
+success:function(html){
+
+}
+}); 
+}else{
+
+}
+});
 $('#country').on('change', function(){
 var countryID = $(this).val();
 if(countryID){
@@ -85,6 +126,7 @@ $('#city').html('<option value="">Select state first</option>');
 }
 });
 });
+
 </script>
 <!-- ************************************************************* -->
 
@@ -123,37 +165,32 @@ include_once 'BaseModel/condb.php';
 // Fetch all the country data 
 $query = "SELECT * FROM `s_organization` WHERE `name` LIKE 'คณะ%'"; 
 $code = mysqli_query($connect, $query);
+$querytm ="SELECT `semester` FROM `timetable` GROUP BY `semester`";
+$tm = mysqli_query($connect, $querytm);
+$querytm1 ="SELECT `academic_year` FROM `timetable` GROUP BY `academic_year`";
+$tm1 = mysqli_query($connect, $querytm1);
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <form  method="POST" action="ajax/ajaxstu.php">
-  <select id="ssemester" name="semester" >
+<select id="ssemester" name="semester" >
 <option >ภาคเรียน</option>
 
-<option value= "1">1</option>
-<option value= "2">2</option>
-<option value= "3">3</option>
-</select> 
+<?php while($row = mysqli_fetch_array($tm))
+{
+echo'<option value="'.$row['semester'].'">'.$row["semester"].'</option>';
+}
+?>
+</select></p>
+
+
 <select id="aacademic_year" name='academic_year'>
 <option>ปีการศึกษา</option>
 
-<option value= "2560">2560</option>
-<option value="2561">2561</option>
-<option value="2562">2562</option>
-<option value="2563">2563</option>
+<?php while($row = mysqli_fetch_array($tm1))
+{
+echo'<option value="'.$row['academic_year'].'">'.$row["academic_year"].'</option>';
+}
+?>
+</select></p>
 
-</select>
-<input type="submit" value="click">
-</form>
-</body>
-</html>
 
   
 

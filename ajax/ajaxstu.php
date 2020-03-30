@@ -4,11 +4,13 @@
 <?php 
 session_start();
  $_SESSION["code"] = $_POST["country_id"];
- echo $state_id = $_POST["state_id"];
-echo $semester =  $_POST["semester"]."<br>";
- echo $academic_year =  $_POST["academic_year"];
+  $state_id = $_POST["state_id"];
+  $semester =  $_POST["semester"];
+  $academic_year =  $_POST["academic_year"];
+  
 // Include the database config file 
 include_once '../BaseModel/condb.php'; 
+
 if(!empty($_POST["country_id"])){ 
 // Fetch state data based on the specific country 
 
@@ -38,6 +40,7 @@ elseif(!empty($_POST["state_id"])){
 $query ="SELECT st.std_id
 FROM teaching as t , user as u , title , timetable as ti , ess_course  as cr , student as st 
 WHERE  t.teacher_id = u.id_card and u.title_id = title.title_id and ti.course_id = cr.course_id and t.timetable_id = ti.timetable_id  and st.std_id = ti.std_id 
+and ti.semester = $semester and ti.academic_year = $academic_year
 and  st.code_id = $state_id 
 
 
@@ -54,7 +57,7 @@ echo '<option value="'.$row['std_id'].'">'.$row['std_id'].'</option>';
 } 
 }else{ 
   
-echo '<option value="">ไม่พบกลุ่มเรียน</option>'; 
+echo '<option value="">'.$semester.'</option>'; 
 } 
 } 
 

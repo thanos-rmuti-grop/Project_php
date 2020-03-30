@@ -31,6 +31,7 @@ if ($mysqli -> connect_errno) {
 if ($result = $mysqli -> query("SELECT *
 FROM teaching as t , user as u , title , timetable as ti , ess_course  as cr , classroom as c , student as st
 WHERE  t.teacher_id = u.id_card and u.title_id = title.title_id and ti.course_id = cr.course_id and t.timetable_id = ti.timetable_id and t.class_id = c.class_id and st.std_id = ti.std_id
+and ti.semester = $semester and ti.academic_year = $academic_year
  and  st.std_id = '".$q."'
 
 
