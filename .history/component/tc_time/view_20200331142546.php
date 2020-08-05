@@ -327,7 +327,7 @@ function(start, end, label) {
             startDate: date
         });
 
-  </script>
+            </script>
   <!-- // แก้ไข และ แสดง -->
   <script>  
  $(document).ready(function(){  

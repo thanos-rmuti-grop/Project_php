@@ -1,137 +1,185 @@
-
-
-
-
-
-
-
-<?php 
-
-$mysqli = new mysqli("localhost","root","","minipro2");
-error_reporting (E_ALL ^ E_NOTICE);
-                                     
-$datalenght = 0;
-if ($mysqli -> connect_errno) {
-  echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
-  exit();
-}
-if ($result = $mysqli -> query("SELECT *
-FROM teaching as t , user as u , title , timetable as ti , ess_course  as cr , classroom as c
-WHERE  t.teacher_id = u.id_card and u.title_id = title.title_id and ti.course_id = cr.course_id and t.timetable_id = ti.timetable_id and t.class_id = c.class_id
-and  t.teacher_id = '1469900298945'
-
-
-
-order by t.day_id ,t.period_begin asc"))    {
-    foreach($result as $data){
-        $title[$datalenght] = $data['title_short'];
-        $tcfname[$datalenght]  = $data['name'];
-        $tclname[$datalenght]  = $data['lastname'];
-        $teaching[$datalenght]  = $data['teaching_id'];
-        $starttime[$datalenght]  =  $data['period_begin'];
-        $endtime[$datalenght]    =  $data['period_end'];
-        $stday[$datalenght]    = $data['day_id'];
-        $crouse[$datalenght]  = $data['COURSE_TITLE'];
-        $crouse_code[$datalenght]  = $data['COURSE_CODE'];
-        $std[$datalenght]  = $data['std_id'];
-        $class[$datalenght]  = $data['class_id'];
-        $col[$datalenght] = $endtime[$datalenght] - $starttime[$datalenght]+1;
-        $datalenght++;
-
-    }
-}
-?>
-
-<?php $days = array("อาทิตย์","จันทร์","อังคาร","พุธ","พฤหัสบดี","ศุกร์","เสาร์");  
-    //$time = array("08.00","09.00","10.00","11.00","12.00","13.00","14.00","15.00","16.00","17.00","18.00","19.00","20.00","21.00");
-    $countdays = 0;
-    $counttime =1;
-  
-    
-    ?>
-
-
-<div class="row">
-<table class="table table-bordered";>
-   
-
-   <thead bgcolor="#CCFFCC">
-       <th colspan="3">วัน</th>
-  
-       <th scope="col" value="1">08.00</th>
-       <th scope="col" value="2">09.00</th>
-       <th scope="col" value="3">10.00</th>
-       <th scope="col" value="4">11.00</th>
-       <th scope="col" value="5">12.00</th>
-       <th scope="col" value="6">13.00</th>
-       <th scope="col" value="7">14.00</th>
-       <th scope="col" value="8">15.00</th>
-       <th scope="col" value="9">16.00</th>
-       <th scope="col" value="10">17.00</th>
-       <th scope="col" value="10">18.00</th>
-       <th scope="col" value="11">19.00</th>
-       
-   </thead> 
-    <br>
-<?php 
-//for($i = 0; $i < $datalenght ; $i++ ){
-   // echo " This is I ".$i." <br>";
-    
-    for($day = 0 ; $day < 7 ; $day++){
-           
-       ?> <tr>    <th  scope="row"> <?php echo $days[$day];?> </th>  <?php 
-
-            
-  
-        for($time = 0 ; $time < 14 ; $time++){
-           
-           ?> <td>
-            <?php           
-                            for($i = 0; $i < $datalenght ; $i++ ) {
-                                
-                                if($day == $stday[$i] && $starttime[$i] == $time){
-                                   
-                                    ?> 
-                                            
-                                            <td align="left" bgcolor="#CCFFCC" colspan="<?php echo $col[$i] ?> "><?php
-                                       echo "[".$crouse_code[$i]."] ".$crouse[$i]."<br>";
-                                       echo  "(".$std[$i].") ห้อง ".$class[$i]."<br>".$title[$i]." ".$tcfname[$i]." ".$tclname[$i]."<br>";?>
-<div align="right" ><a href="#"><i class="fas fa-user-edit"></i></a></div>
 <?php
-                                        if($time == $starttime[$i+1] && $day == $stday[$i+1]){
-                                      echo " ".$title[$i+1]." ".$tcfname[$i+1]." ".$tclname[$i+1]."<br>";
-                                    }
-                                   
-                                              
-                                
-                                           
-                                            
-                                       /* foreach($stday as $value){
-                                            if($day == $value){
-                                                    foreach($teaching as $tec){
-                                                        if($starttime[$i] == $time){
-                                                        echo $tec." ";
-                                                            }
-                                                    }
-                                                
-                                                
-                                            }
-                                        }*/
-                                      ?>
-                                      
-                                      
-                                      </td> 
-                                        <?php $time = $endtime[$i]+1?>
-                                        
-                                    <?php
-                                }
-                            }
-                        
-               ?> 
-           
-           </td> <?php
+require_once("BaseModel.php");
+class TimeModel extends BaseModel{
+    function __construct(){
+        if(!static::$db){
+            static::$db = mysqli_connect($this->host, $this->username, $this->password, $this->db_name);
+            mysqli_set_charset(static::$db,"utf8");
         }
-       ?> </tr><?php 
     }
-//}
-?>
+
+    function check($data){
+        $sql = "select * from teaching  as t 
+            where 
+            class_id =  '".$data["class_id"]."' and
+            start_date = '".$data["start_date"]."' and 
+            end_date = '".$data["end_date"]."' and 
+            practical_hours = '".$data["practical_hours"]."' and
+            theory_hours = '".$data["theory_hours"]."' and
+            period_begin = '".$data["period_begin"]."' and 
+            period_end = '".$data["period_end"]."' and
+            
+            day_id = '".$data["day_id"]."' and
+            teacher_id = '".$data["teacher_id"]."' and 
+            code = '".$data["code"]."' 
+        ";
+        //ใส่ไว้สำหรับ ค้นหาข้อมูล
+        if ($result = mysqli_query(static::$db,$sql, MYSQLI_USE_RESULT)) { //ถ้าเผื่อ query ข้อมูลได้ มันจะทำตามเงื่อนไขเรื่อยๆ
+            $data = [];
+            foreach($result as $row){
+                $data[] = $row;
+            }
+            // while ($row = mysqli_fetch_array($result,MYSQLI_ASSOC)){
+                
+            // }
+            $num=mysqli_num_rows($result); 
+            
+            if($num > 0)   		
+            {
+            //ตรวจสอบถ้าไม่มีสมาชิกนี้ในฐานข้อมูลจะเด้งไปหน้าเพิ่มข้อมูลสมาชิก (หน้านี้ทำเพิ่มเองนะครับ ลองดู workshop ก่อนหน้าครับ)   
+                 echo "<script>";
+                 echo "alert('มีข้อมูลนี้แล้ว !');";
+                 echo "window.history.back();";
+                   echo "</script>";
+
+                 
+            }else if($num == 0){
+                $sql = "INSERT INTO timetable ( timetable_id, semester, academic_year, std_id, course_id, code) VALUES ( NULL,'".$data["semester"]."', '".$data["academic_year"]."', '".$data["std_id"]."', '".$data["course_id"]."', '".$data["code"]."');
+
+                INSERT INTO teaching( timetable_id, teacher_id, class_id, day_id, period_begin, period_end, theory_hours, practical_hours, code, start_date, end_date, std_nor, std_spc)  
+                VALUES
+        ( LAST_INSERT_ID(),
+        '".$data["teacher_id"]."',
+        '".$data["class_id"]."',
+        '".$data["day_id"]."',
+        '".$data["period_begin"]."',
+        '".$data["period_end"]."',
+        '".$data["theory_hours"]."',
+        '".$data["practical_hours"]."',
+        '".$data["code"]."',
+        '".$data["start_date"]."',
+        '".$data["end_date"]."',
+            NULL,
+            NULL)
+            ";
+        
+        
+                
+        
+        
+        
+        
+                echo "<pre>";
+                print_r($sql);
+                echo "</pre>";
+                if (static::$db->multi_query($sql) === TRUE) {
+                    echo "1";
+                } else {
+                    echo "0";
+                }
+        
+                
+            
+            
+            }else{
+                echo "....";
+            }
+           
+            
+            $result->close();
+            return $data;
+        }	
+       
+        
+    }
+ 
+function add_teaching($data = []){
+        $sql = "INSERT INTO timetable ( timetable_id, semester, academic_year, std_id, course_id, code) VALUES ( NULL,'".$data["semester"]."', '".$data["academic_year"]."', '".$data["std_id"]."', '".$data["course_id"]."', '".$data["code"]."');
+
+        INSERT INTO teaching( timetable_id, teacher_id, class_id, day_id, period_begin, period_end, theory_hours, practical_hours, code, start_date, end_date, std_nor, std_spc)  
+        VALUES
+( LAST_INSERT_ID(),
+'".$data["teacher_id"]."',
+'".$data["class_id"]."',
+'".$data["day_id"]."',
+'".$data["period_begin"]."',
+'".$data["period_end"]."',
+'".$data["theory_hours"]."',
+'".$data["practical_hours"]."',
+'".$data["code"]."',
+'".$data["start_date"]."',
+'".$data["end_date"]."',
+    NULL,
+    NULL)
+    ";
+
+
+        
+
+
+
+
+        echo "<pre>";
+        print_r($sql);
+        echo "</pre>";
+        if (static::$db->multi_query($sql) === TRUE) {
+            echo "1";
+        } else {
+            echo "0";
+        }
+
+        
+    }
+function update_tc($data = []){
+        $sql = "UPDATE
+        `teaching`
+    SET
+        `timetable_id` = '".$data["timetable_id"]."',
+        `class_id` = '".$data["class_id"]."',
+        `day_id` = '".$data["day_id"]."',
+        `period_begin` = '".$data["period_begin"]."',
+        `period_end` = '".$data["period_end"]."',
+        `theory_hours` = '".$data["theory_hours"]."',
+        `practical_hours` = '".$data["practical_hours"]."',
+        `start_date` = '".$data["start_date"]."',
+        `end_date` = '".$data["end_date"]."'
+      
+    WHERE
+    `teaching_id` = '".$data["teaching_id"]."'
+
+    ";
+
+
+        
+
+
+
+
+        echo "<pre>";
+        print_r($sql);
+        echo "</pre>";
+        if (static::$db->multi_query($sql) === TRUE) {
+            echo "1";
+        } else {
+            echo "0";
+        }
+
+        
+    }
+    // DELETE FROM `user` WHERE `Id_card` = '".$id."'
+    function del_tc($id){
+        
+        $sql = "DELETE FROM teaching WHERE teaching_id = '".$id."'
+        ";
+
+        
+        if (mysqli_query(static::$db,$sql, MYSQLI_USE_RESULT)) {
+            return 1;
+        }else {
+            return 0;
+        }
+    }
+    
+}
+    ?>
+    

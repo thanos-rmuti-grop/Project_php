@@ -83,7 +83,11 @@
                                       }else echo "ว่างสอน"; ?>
                                       </td>
                                       <td>
-                                   
+                                    <a class="btn btn-primary btn-sm" href="index.php?act=cannot">
+                                        <i class="fas fa-pencil-alt">
+                                        </i>
+                                        Edit
+                                    </a>
                                     <a class="btn btn-info btn-sm editbtn" href="#">
                                         <i class="fas fa-pencil-alt">
                                         </i>

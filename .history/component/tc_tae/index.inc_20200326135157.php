@@ -28,7 +28,7 @@
             
          $user_model -> upUser($data);
  
-         ?><script>window.location="index.php?act=user";</script><?php
+         ?><script>window.location="index.php?act=tc";</script><?php
  
      
          
@@ -48,8 +48,8 @@
         // $data["big_lastname"] = $_POST["big_lastname"]; 
         // $data["big_call"] = $_POST["big_call"];    
             $user_model -> addUser($data);
-            ?><script>window.location="index.php?act=user";</script><?php
-           
+    
+            ?><script>window.location="index.php?act=tc";</script><?php
     
         
     }

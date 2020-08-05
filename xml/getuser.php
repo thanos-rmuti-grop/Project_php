@@ -114,9 +114,9 @@ order by t.day_id ,t.period_begin asc"))    {
                                        echo  "(".$std[$i].") ห้อง ".$class[$i]."<br>".$title[$i]." ".$tcfname[$i]." ".$tclname[$i]."<br>";
                                             $tid =  $teaching[$i]; ?>
 
-<div align="right" ><a class="show_data" id="<?php echo $tid ?>" href="#"><?php echo $tid ?> <i class="fas fa-user-edit show_data"></i></a>
+<div align="right" ><a class="edit_tc" id="<?php echo $tid ?>" href="#"><?php echo $tid ?> <i class="fas fa-user-edit edit_tc"></i></a>
 
-<a class="edit_data" id="<?php echo $tid ?>" href="#"> <i class="fas fa-user-slash"></i> </a></div> 
+<a class="" onclick="return confirm('กรุณากด ยืนยัน เพื่อลบข้อมูล รหัสการสอน <?php echo $tid ?>')" " href="index.php?act=tc_time&action=del_tc&id=<?php echo $tid ?>"> <i class="fas fa-user-slash"></i> </a></div> 
 
 <?php
                                         if($time == $starttime[$i+1] && $day == $stday[$i+1]){
@@ -156,93 +156,8 @@ order by t.day_id ,t.period_begin asc"))    {
     }
 //}
 ?>
- <div id="show_data" class="modal fade">  
-      <div class="modal-dialog">  
-           <div class="modal-content">  
-                <div class="modal-header">  
-                     <button type="button" class="close" data-dismiss="modal">&times;</button>  
-                     <h4 class="modal-title">แก้ไขข้อมูล</h4>  
-                </div>  
-                <div class="modal-body">  
-                     <form method="post" action="index.php?act=tc_time&action=update_time">  
-
-                          <label>รหัสบัตรประชาชน</label>  
-                          <input type="text" name="T1" id="teaching_id" class="form-control" />  
-                          <br />  
-                          <label>คำนำหน้า</label>  
-                          <textarea name="T2" id="timetable_id" class="form-control"></textarea>  
-                          <br />  
-                          <label>ชื่อ</label>  
-                          <input type="text" name="T3" id="day_id" class="form-control" />  
-
-                          <br />  
-                          <label>นามสกุล</label>  
-                          <input type="text" name="practical_hours" id="day_id" class="form-control" />  
-                          <br />  
-                          <label>รหัสผ่าน</label>  
-                          <input type="text" name="password" id="password" class="form-control" />  
-                          <br />  
-                          <label>สาขา</label>  
-                          <input type="text" name="code" id="code" class="form-control" />  
-                          <br />  
-                          <!-- <input type="text" name="employee_id" id="employee_id" />   -->
-                          <!-- <input type="submit" name="insert" id="insert" value="Insert" class="btn btn-success" />   -->
-
-                      
-                </div>  
-                <div class="modal-footer">  
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button name="insert" id="insert" value="Insert" type="submit" class="btn btn-primary" data="modal" 
-                onclick="return confirm('กรุณากด ยืนยัน เพื่อเพิ่ม')">ยืนยัน
-                </button>
-</form> 
-                </div>  
-           </div>  
-      </div>  
- </div> 
- <script>  
- $(document).ready(function(){  
-      $('#add').click(function(){  
-           $('#insert').val("Insert");  
-           $('#show')[0].reset();  
-      });  
-      $(document).on('click', '.show_data', function(){  
-           var employee_id = $(this).attr("id");  
-           $.ajax({  
-                url:"ajax/update_tc_time.php",  
-                method:"POST",  
-                data:{employee_id:employee_id},  
-                dataType:"json",  
-                success:function(data){  
-                     $('#name').val(data.day_id);  
-                     $('#address').val(data.end_date);  
-                     $('#gender').val(data.start_date);  
-                     $('#designation').val(data.start_date);  
-                     $('#age').val(data.age);  
-                     $('#employee_id').val(data.id);  
-                     $('#insert').val("Update");  
-                     $('#show_data').modal('show');  
-                }  
-           });  
-      });  
-     
-      $(document).on('click', '.view_data', function(){  
-           var employee_id = $(this).attr("id");  
-           if(employee_id != '')  
-           {  
-                $.ajax({  
-                     url:"select.php",  
-                     method:"POST",  
-                     data:{employee_id:employee_id},  
-                     success:function(data){  
-                          $('#employee_detail').html(data);  
-                          $('#dataModal').modal('show');  
-                     }  
-                });  
-           }            
-      });  
- });  
- </script>
+ 
+ 
 </body>
 </html>
 

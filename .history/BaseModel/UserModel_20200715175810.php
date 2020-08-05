@@ -176,8 +176,7 @@ class UserModel extends BaseModel{
         }
     }
     function addUser($data = []){
-        $sql = "INSERT INTO `user`(`Id_card`, `Title_id`, `name`, `lastname`, `password`, `code`, `position_id`, `status_id`, `allow_id`) 
-        VALUES(
+        $sql = "INSERT INTO `user`(`Id_card`, `Title_id`, `name`, `lastname`, `password`, `code`, `position_id`, `status_id`, `allow_id`) VALUESr(
             '".$data["Id_card"]."',
             '".$data["Title_id"]."',
             '".$data["name"]."',

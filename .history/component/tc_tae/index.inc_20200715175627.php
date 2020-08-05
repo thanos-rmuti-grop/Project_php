@@ -48,7 +48,7 @@
         // $data["big_lastname"] = $_POST["big_lastname"]; 
         // $data["big_call"] = $_POST["big_call"];    
             $user_model -> addUser($data);
-            ?><script>window.location="index.php?act=user";</script><?php
+    echo "55555555555"
            
     
         

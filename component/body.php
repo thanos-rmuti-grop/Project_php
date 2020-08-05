@@ -31,7 +31,7 @@
 					  require_once("component/tc_tae/cannot.php");
 				  	
 				  }
-				  else if ($act=='tc_teach') {
+				  else if ($act=='insert_tc') {
 					  require_once("component/tc_time/tc.php");
 				  	
 				  }

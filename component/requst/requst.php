@@ -51,6 +51,19 @@ $('#user').html(html);
   <div class="col">
   <h5 >นาย กิตติพงษ์ ปลิงกระโทก</h5>
   <br>
+
+  <?php
+  foreach($user as $month){
+    $month['start_date'];
+    if(date('n',$month['start_date']) ){
+      echo $month['start_date'];
+    }
+  }
+    
+ 
+    
+ 
+  ?>
   <div align="center">
   <table>
     <tr>

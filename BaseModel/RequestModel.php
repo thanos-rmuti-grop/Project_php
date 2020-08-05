@@ -67,7 +67,8 @@ class UserModel extends BaseModel{
     }
     function getReport(){
        
-        $sql  = "SELECT * FROM teaching as te ,timetable as ti,user as u ,ess_course as ess WHERE MONTH(te.start_date) =2 AND te.teacher_id= 3249900298946 AND te.std_nor = 1 AND ti.timetable_id = te.timetable_id AND u.Id_card = te.teacher_id and ti.course_id  = ess.COURSE_ID";
+        $sql  = "SELECT * FROM teaching as te ,timetable as ti,user as u ,ess_course as ess WHERE MONTH(te.start_date) =2 AND te.teacher_id= 3249900298946 AND te.std_nor = 1 AND ti.timetable_id = te.timetable_id AND u.Id_card = te.teacher_id and ti.course_id = ess.COURSE_ID
+        ";
         if ($result = mysqli_query(static::$db,$sql, MYSQLI_USE_RESULT)) { //ถ้าเผื่อ query ข้อมูลได้ มันจะทำตามเงื่อนไขเรื่อยๆ
             $data = [];
             foreach($result as $row){
