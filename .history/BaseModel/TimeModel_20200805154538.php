@@ -33,19 +33,7 @@ class TimeModel extends BaseModel{
 function add_teaching($data = []){
         $sql = "INSERT INTO timetable ( timetable_id, semester, academic_year, std_id, course_id, code) VALUES ( NULL,'".$data["semester"]."', '".$data["academic_year"]."', '".$data["std_id"]."', '".$data["course_id"]."', '".$data["code"]."');
 
-        INSERT INTO teaching( timetable_id, 
-        teacher_id, 
-        class_id, 
-        day_id, 
-        period_begin, 
-        period_end, 
-        theory_hours, 
-        practical_hours, 
-        code, 
-        start_date, 
-        end_date, 
-        std_nor, 
-        std_spc)  
+        INSERT INTO teaching( timetable_id, teacher_id, class_id, day_id, period_begin, period_end, theory_hours, practical_hours, code, start_date, end_date, std_nor, std_spc)  
         VALUES
 ( LAST_INSERT_ID(),
 '".$data["teacher_id"]."',

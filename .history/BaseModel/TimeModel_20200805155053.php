@@ -44,8 +44,7 @@ function add_teaching($data = []){
         code, 
         start_date, 
         end_date, 
-        std_nor, 
-        std_spc)  
+        std_nor, std_spc)  
         VALUES
 ( LAST_INSERT_ID(),
 '".$data["teacher_id"]."',
